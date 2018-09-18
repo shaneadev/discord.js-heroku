@@ -10,8 +10,8 @@ client.on('message', msg => {
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
-    if (command === 'guide') return msg.channel.send('https://git.io/d.js-heroku');
-    else if (command === 'invite') return msg.channel.send(process.env.INVITE);
+    if (command === 'sal') return msg.channel.send('Salutare!');
+    else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
 });
 
 client.login(process.env.TOKEN);
