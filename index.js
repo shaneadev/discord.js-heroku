@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setActivity('shane.exe', {type: 'WATCHING'});
+    client.user.setActivity('shane.mp4', {type: 'WATCHING'});
 });
 
 client.on('guildMemberAdd', (member) => {
@@ -11,7 +11,7 @@ client.on('guildMemberAdd', (member) => {
     member.addRole(joinrole);
     const joinchannel = member.guild.channels.find('name', 'general');
     if(!joinchannel) return;
-    joinchannel.send('**${member.user.username}** a intrat in familie. Bine ai venit, **${member.user.username}**!');
+    joinchannel.send('Avem un nou membru in familie '${member}'');
 });
 
 client.on('message', msg => {
