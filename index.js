@@ -11,7 +11,7 @@ client.on('guildMemberAdd', (member) => {
     member.addRole(joinrole);
     const joinchannel = member.guild.channels.find('name', 'general');
     if(!joinchannel) return;
-    joinchannel.send('Avem un nou membru in familie '${member}'');
+    joinchannel.send('Avem un nou membru in familie!');
 });
 
 client.on('message', msg => {
