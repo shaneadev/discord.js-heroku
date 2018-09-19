@@ -6,6 +6,14 @@ client.on('ready', () => {
     client.user.setActivity('shane.exe', {type: 'WATCHING'});
 });
 
+client.on('guildMemberAdd', (member) => {
+    var joinrole = member.guild.roles.find('name', 'Member');
+    member.addRole(joinrole);
+    const joinchannel = member.guild.channels.find('name', 'general');
+    if(!joinchannel) return;
+    joinchannel.send('**${member}** a intrat in familie. Bine ai venit, **${member}**!');
+});
+
 client.on('message', msg => {
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
