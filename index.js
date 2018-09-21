@@ -21,17 +21,6 @@ client.on('message', msg => {
     if (command === 'sal') return msg.channel.send('Salutare!');
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
     else if (command === 're') return msg.channel.send('Re băjatu!');
-    
-    msg = message.content.toLowerCase();
-    if(message.author.bot) return;
-    mention = message.mentions.users.first();
-    if(msg.startsWith ("!botmessage")) {
-        if(mention == null) { return; }
-        message.delete();
-        mentionMessage = message.content.slice (8);
-        mention.sendMessage (mentionMessage);
-        message.channel.send ("Mesaj primis cu succes!");
-    }
 });
 
 client.login(process.env.TOKEN);
