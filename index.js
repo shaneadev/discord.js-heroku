@@ -2,6 +2,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
+client.mutes = require("./mutes.json");
+
 client.on('ready', () => {
     client.user.setActivity('shane.mp4', {type: 'WATCHING'});
 });
