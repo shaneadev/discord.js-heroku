@@ -20,6 +20,7 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     if (command === 'sal') return msg.channel.send('Salutare!');
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
+    else if (command === 're') return msg.channel.send('Re băjaru!');
 });
 
 client.login(process.env.TOKEN);
