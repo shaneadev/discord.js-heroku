@@ -21,6 +21,7 @@ client.on('message', msg => {
     if (command === 'sal') return msg.channel.send('Salutare!');
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
     else if (command === 're') return msg.channel.send('Re băjatu!');
+    else if (command === 'thespriteboss') return msg.channel.send('TheSprite e sheful tuturor!');
 });
 
 client.login(process.env.TOKEN);
