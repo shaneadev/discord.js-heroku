@@ -22,7 +22,10 @@ client.on('message', msg => {
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
     else if (command === 're') return msg.channel.send('Re băjatu!');
     else if (command === 'thespriteboss') return msg.channel.send('TheSprite e sheful tuturor!');
-    else if (command === 'iarina') return msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
+    else if (command === 'iarina') {
+        msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
+        msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
+    }
 });
 
 client.login(process.env.TOKEN);
