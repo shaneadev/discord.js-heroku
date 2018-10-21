@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setActivity('shane.mp4', {type: 'WATCHING'});
+    client.user.setActivity('shane & iarina.mp4', {type: 'WATCHING'});
 });
 
 client.on('guildMemberAdd', (member) => {
@@ -22,6 +22,7 @@ client.on('message', msg => {
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
     else if (command === 're') return msg.channel.send('Re băjatu!');
     else if (command === 'thespriteboss') return msg.channel.send('TheSprite e sheful tuturor!');
+    else if (command === 'iarina') return msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
 });
 
 client.login(process.env.TOKEN);
