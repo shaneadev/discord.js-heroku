@@ -28,4 +28,13 @@ client.on('message', msg => {
     }
 });
 
+client.on("channelCreate", async channel => {
+   let sChannel =channel.guild.channels.find(`name`, "logs"); 
+    sChannel.send(`Canalul ***${channel}*** a fost creat cu succes!`);
+});
+client.on("channelDelete", async channel => {
+   let sChannel =channel.guild.channels.find(`name`, "logs"); 
+    sChannel.send(`Canalul ***${channel}*** a fost sters, toate mesajele au fost stocate!`);
+});
+
 client.login(process.env.TOKEN);
