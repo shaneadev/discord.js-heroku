@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setGame('justvillage.com', 'https://www.youtube.com/channel/UCI9sFzv0XHooQXWfsk3bFSw');
+    client.user.setGame('justvillage.com', 'https://twitch.tv/justvillagecom/');
 });
 
 client.on("guildMemberAdd", async member => {
