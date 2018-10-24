@@ -28,7 +28,7 @@ client.on('message', msg => {
     }
     if (message.content === 'ce poza de profil am?') {
         msg.channel.send(` ```${member}, poza ta de profil este:``` `);
-        message.reply(message.author.avatar);
+        message.reply(message.author.avatarURL);
     }
 });
 
