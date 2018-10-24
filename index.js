@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('ready', () => {
-    client.user.setActivity('shane & iarina.mp4', {type: 'WATCHING'});
+    client.user.setGame('justvillage.com', 'https://www.youtube.com/channel/UCI9sFzv0XHooQXWfsk3bFSw');
 });
 
 client.on("guildMemberAdd", async member => {
