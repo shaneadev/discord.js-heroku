@@ -6,12 +6,12 @@ client.on('ready', () => {
     client.user.setActivity('shane & iarina.mp4', {type: 'WATCHING'});
 });
 
-client.on('guildMemberAdd', async member => {
+client.on("guildMemberAdd", async member => {
     var joinrole = member.guild.roles.find('name', 'Member');
     member.addRole(joinrole);
-    const joinchannel = member.guild.channels.find('name', 'general');
+    let joinchannel = member.guild.channels.find(`name`, "general");
     if(!joinchannel) return;
-    joinchannel.send('**[+]** Alo veruti! ${member} s-a alaturat acestui grup! **Bun venit in familie ${member}**');
+    joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
 });
 
 client.on('message', msg => {
