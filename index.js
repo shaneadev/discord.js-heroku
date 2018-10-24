@@ -26,7 +26,7 @@ client.on('message', msg => {
         msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
         msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
     }
-    if (message.content === 'ce poza de profil am?') {
+    else if (command === 'profile') {
         msg.channel.send(` ```${member}, poza ta de profil este:``` `);
         message.reply(message.author.avatarURL);
     }
