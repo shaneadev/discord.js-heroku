@@ -26,8 +26,8 @@ client.on('message', msg => {
         msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
         msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
     }
-    if (message.content === 'what is my avatar') {
-        msg.channel.send(` ```${member}, avatarul tau este:``` `);
+    if (message.content === 'ce poza de profil am?') {
+        msg.channel.send(` ```${member}, poza ta de profil este:``` `);
         message.reply(message.author.avatar);
     }
 });
