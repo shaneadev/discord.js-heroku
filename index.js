@@ -49,7 +49,7 @@ client.on('message', msg => {
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
-    if(!msg.content.startsWith(prefix)) return ;
+
     if(cooldown.has(msg.author.id)) {
         msg.delete();
         return msg.reply("Trebuie sa astepti un minute pentru a folosi din noi comanda!");
