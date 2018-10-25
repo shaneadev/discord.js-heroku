@@ -37,19 +37,28 @@ client.on('message', msg => {
     else if(command === 'commands') {
         let embed = new Discord.RichEmbed()
         .setAuthor('Comenzile botului sunt:')
-        .setDescription('!profile <@ user> - iti arata poza de profil a unui membru.\n!test - sdadsadsa')
+        .setDescription('!profile <@ user> - iti arata poza de profil a unui membru.\n!sal - Salutare de la bot\n!re - Re de la bot\n!pa - Amenintari de la bot')
         .setColor('RANDOM')
         msg.channel.send(embed)
+    }
+    else if(command === 'gluma') {
+        var facts = ["test1", "test2", "test3"];
+        var fact = Math.floor(Math.random() * facts.length);
+        msg.channel.send(facts[fact]);
     }
 });
 
 client.on("channelCreate", async channel => {
-   let sChannel =channel.guild.channels.find(`name`, "logs"); 
+    let sChannel =channel.guild.channels.find(`name`, "logs"); 
     sChannel.send(`Canalul ***${channel}*** a fost creat cu succes!`);
 });
 client.on("channelDelete", async channel => {
-   let sChannel =channel.guild.channels.find(`name`, "logs"); 
+    let sChannel =channel.guild.channels.find(`name`, "logs"); 
     sChannel.send(`Canalul ***${channel}*** a fost sters, toate mesajele au fost stocate!`);
+});
+client.on("channelUpdate", async channel => {
+    let sChannel =channel.guild.channels.find(`name`, "logs"); 
+    sChannel.send(`Canalul ***${channel}*** a fost modificat de catre un administrator!`); 
 });
 
 client.login(process.env.TOKEN);
