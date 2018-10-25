@@ -29,8 +29,15 @@ client.on('message', msg => {
     else if(command === 'profile') {
         let user = msg.mentions.users.first() || msg.author;
         let embed = new Discord.RichEmbed()
-        .setAuthor(`${user.username}`)
+        .setAuthor(`Poza de profil a lui ${user.username} este:`)
         .setImage(user.displayAvatarURL)
+        .setColor('RANDOM')
+        msg.channel.send(embed)
+    }
+    else if(command === 'commands') {
+        let embed = new Discord.RichEmbed()
+        .setAuthor('Comenzile botului sunt:')
+        .setDescription('!profile <@ user> - iti arata poza de profil a unui membru.\n!test - sdadsadsa')
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
