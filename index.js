@@ -29,7 +29,7 @@ client.on('message', msg => {
     else if(command === 'profile') {
         let user = msg.mentions.users.first() || msg.author;
         let embed = new Discord.RichEmbed()
-        .setAuthor(`${user.username}')
+        .setAuthor(`${user.username}`)
         .setImage(user.displayAvatarURL)
         .setColor('RANDOM')
         msg.channel.send(embed)
