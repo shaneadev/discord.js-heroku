@@ -27,7 +27,12 @@ client.on('message', msg => {
         msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
     }
     else if(command === 'profile') {
-        msg.reply(msg.author.avatar);   
+        let user = msg.mentions.users.first() || msg.author;
+        let embed = new Discord.RichEmbed()
+        .setAuthor(`${user.username}')
+        .setImage(user.displayAvatarURL)
+        .setColor('RANDOM')
+        msg.channel.send(embed)
     }
 });
 
