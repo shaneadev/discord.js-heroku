@@ -23,7 +23,7 @@ client.on('message', msg => {
     
     if(cooldown.has(msg.author.id)) {
         msg.delete();
-        return msg.reply("Trebuie sa astepti 3 minute pentru a folosi din noi comanda!");
+        return msg.reply("Trebuie sa astepti 3 minute pentru a folosi din noi comenzile!");
     }
     cooldown.add(msg.author.id);   
     
