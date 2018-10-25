@@ -41,6 +41,13 @@ client.on('message', msg => {
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
+    if(msg.content === "$loop") { 
+        var interval = setInterval (function () {
+            // use the message's channel (TextChannel) to send a new message
+            msg.channel.send("test")
+            .catch(console.error); // add error handling here
+        }, 1 * 1000); 
+    }
 });
 
 client.on("channelCreate", async channel => {
