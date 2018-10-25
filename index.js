@@ -36,14 +36,14 @@ client.on('message', msg => {
     }
     else if(command === 'injura') {
         let user = msg.mentions.users.first() || msg.author;
-        var facts = [`${user.username} du-te-n mă-ta pe gheață!`, `${user.username} bă, tu esti prost cu normă-ntreagă!`, `${user.username} ia loc in p!zda mă-tii de prost`, `Bai ${user.username} asta. Zii lui mă-ta să nu îsi mai schimbe rujurile că îmi face pula curcubeu.`, `Ba ${user.username}! Auzi ma pUlă bleagă o mai dor pe mata genunchii ?`, `${user.username}, nu ai vrea să te facem toți o rețea ??`];
+        var facts = [`**${user.username}** du-te-n mă-ta pe gheață!`, `**${user.username}** bă, tu esti prost cu normă-ntreagă!`, `**${user.username}** ia loc in p!zda mă-tii de prost`, `Băi **${user.username}** asta. Zii lui mă-ta să nu îsi mai schimbe rujurile că îmi face pula curcubeu.`, `Bă **${user.username}**! Auzi ma pUlă bleagă o mai dor pe mata genunchii ?`, `**${user.username}**, nu ai vrea să te facem toți o rețea ??`];
         var fact = Math.floor(Math.random() * facts.length);
         msg.channel.send(facts[fact]);
     }
     else if(command === 'commands') {
         let embed = new Discord.RichEmbed()
         .setAuthor('Comenzile botului sunt:')
-        .setDescription('!profile <@ user> - iti arata poza de profil a unui membru/sau poza ta.\n!sal - Salutare de la bot\n!re - Re de la bot\n!pa - Amenintari de la bot')
+        .setDescription('!profile <@ user> - iti arata poza de profil a unui membru/sau poza ta.\n!sal - Salutare de la bot\n!re - Re de la bot\n!pa - Amenintari de la bot\n!injura <@ user> - Injura un membru!')
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
