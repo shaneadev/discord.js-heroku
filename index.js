@@ -41,14 +41,6 @@ client.on('message', msg => {
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
-    if(msg.content === "$loop") { 
-        var interval = setInterval (function () {
-            let channel = member.guild.channels.find(`name`, "general");
-            if(!channel) return;
-            channel.send("test");
-            .catch(console.error); // add error handling here
-        }, 1 * 1000); 
-    }
 });
 
 client.on("channelCreate", async channel => {
