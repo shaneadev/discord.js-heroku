@@ -36,7 +36,7 @@ client.on('message', msg => {
     }
     else if(command === 'injura') {
         let user = msg.mentions.users.first() || msg.author;
-        var facts = ['${user.username} du-te-n mă-ta pe gheață!', '${user.username} bă, tu esti prost cu normă-ntreagă!', '${user.username} ia loc in p!zda mă-tii de prost', 'Bai ${user.username} asta. Zii lui mă-ta să nu îsi mai schimbe rujurile că îmi face pula curcubeu.', 'Ba ${user.username}! Auzi ma pUlă bleagă o mai dor pe mata genunchii ?', '${user.username}, nu ai vrea să te facem toți o rețea ??'];
+        var facts = [`${user.username} du-te-n mă-ta pe gheață!`, `${user.username} bă, tu esti prost cu normă-ntreagă!`, `${user.username} ia loc in p!zda mă-tii de prost`, `Bai ${user.username} asta. Zii lui mă-ta să nu îsi mai schimbe rujurile că îmi face pula curcubeu.`, `Ba ${user.username}! Auzi ma pUlă bleagă o mai dor pe mata genunchii ?`, `${user.username}, nu ai vrea să te facem toți o rețea ??`];
         var fact = Math.floor(Math.random() * facts.length);
         msg.channel.send(facts[fact]);
     }
