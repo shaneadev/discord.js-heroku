@@ -77,7 +77,7 @@ client.on('message', msg => {
         if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('Announcements:')
-        .setDescription('Sustine serverul de discord cu distribuire a urmatorului link:\nInvite: https://discord.gg/Uj8qkYD')
+        .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/Uj8qkYD')
         .setColor('RANDOM')
         msg.delete()
         return msgchannel.send(embed)
