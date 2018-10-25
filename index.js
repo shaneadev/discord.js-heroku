@@ -20,6 +20,17 @@ client.on('message', msg => {
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
+    
+    if(cooldown.has(msg.author.id)) {
+        msg.delete();
+        return msg.reply("Trebuie sa astepti un minute pentru a folosi din noi comanda!");
+    }
+    cooldown.add(msg.author.id);   
+    
+    setTimeout(() => {
+        cooldown.delete(msg.author.id)  
+    }, cdseconds * 1000)
+    
     if (command === 'sal') return msg.channel.send('Salutare!');
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
     else if (command === 're') return msg.channel.send('Re băjatu!');
@@ -49,16 +60,6 @@ client.on('message', msg => {
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
-
-    if(cooldown.has(msg.author.id)) {
-        msg.delete();
-        return msg.reply("Trebuie sa astepti un minute pentru a folosi din noi comanda!");
-    }
-    cooldown.add(msg.author.id);   
-    
-    setTimeout(() => {
-        cooldown.delete(msg.author.id)  
-    }, cdseconds * 1000)
 });
 
 client.on("channelCreate", async channel => {
