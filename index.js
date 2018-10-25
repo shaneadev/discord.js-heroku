@@ -82,6 +82,10 @@ client.on('message', msg => {
         msg.delete()
         return msgchannel.send(embed)
     }
+    else if(command === 'nu') {
+        if(!msg.member.permissions.has('ADMINISTRATOR')) return;
+        msg.channel.send('Ok, tu esti seful!');
+    }
 });
 
 client.on("channelCreate", async channel => {
