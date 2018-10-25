@@ -67,7 +67,8 @@ client.on('message', msg => {
         .setAuthor('La colindat...')
         .setDescription('Ba voi astea. Eu la varsta voastra mergeam la colindat de halloween. Eram in generala si invatam dupa amiaza, ieseam pe la ora 7.\nDupa ultima ora mergeam in baie si ne machiam cu acoarele pe fata si speriam fetele de la liceu prin zone intunecate.\nAcasa ne faceam costume si mergeam la colindat cu vorba aia celebra, si oamenii chiar ne dadeau naiba! :D.')
         .setColor('RANDOM')
-        msgchannel.send(embed)
+        msg.delete()
+        return msgchannel.send(embed)
     }
 });
 
