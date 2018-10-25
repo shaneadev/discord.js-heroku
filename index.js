@@ -43,8 +43,9 @@ client.on('message', msg => {
     }
     if(msg.content === "$loop") { 
         var interval = setInterval (function () {
-            // use the message's channel (TextChannel) to send a new message
-            msg.channel.send("test")
+            let channel = member.guild.channels.find(`name`, "general");
+            if(!channel) return;
+            channel.send("test");
             .catch(console.error); // add error handling here
         }, 1 * 1000); 
     }
