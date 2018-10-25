@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 let cooldown = new Set();
-let cdseconds = 60;
+let cdseconds = 180;
 
 client.on('ready', () => {
     client.user.setGame('justvillage.com', 'https://twitch.tv/justvillagecom/');
@@ -23,7 +23,7 @@ client.on('message', msg => {
     
     if(cooldown.has(msg.author.id)) {
         msg.delete();
-        return msg.reply("Trebuie sa astepti un minute pentru a folosi din noi comanda!");
+        return msg.reply("Trebuie sa astepti 3 minute pentru a folosi din noi comanda!");
     }
     cooldown.add(msg.author.id);   
     
