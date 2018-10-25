@@ -27,7 +27,7 @@ client.on('message', msg => {
         msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
     }
     else if(command === 'profile') {
-        msg.reply(msg.author.avatarURL);   
+        msg.reply(msg.author.avatar);   
     }
 });
 
