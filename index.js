@@ -49,7 +49,7 @@ client.on('message', msg => {
     }
     else if(command === 'injura') {
         let user = msg.mentions.users.first() || msg.author;
-        var facts = [`**${user.username}** du-te-n mă-ta pe gheață!`, `**${user.username}** bă, tu esti prost cu normă-ntreagă!`, `**${user.username}** ia loc in p!zda mă-tii de prost`, `Băi **${user.username}** asta. Zii lui mă-ta să nu îsi mai schimbe rujurile că îmi face pula curcubeu.`, `Bă **${user.username}**! Auzi ma pUlă bleagă o mai dor pe mata genunchii ?`, `**${user.username}**, nu ai vrea să te facem toți o rețea ??`];
+        var facts = [`**${user.username}**, du-te-n mă-ta pe gheață!`, `**${user.username}** bă, tu esti prost cu normă-ntreagă!`, `**${user.username}** ia loc in p!zda mă-tii de prost`, `Băi **${user.username}** asta. Zii lui mă-ta să nu îsi mai schimbe rujurile că îmi face pula curcubeu.`, `Bă **${user.username}**! Auzi ma pUlă bleagă o mai dor pe mata genunchii ?`, `**${user.username}**, nu ai vrea să te facem toți o rețea ??`];
         var fact = Math.floor(Math.random() * facts.length);
         msg.channel.send(facts[fact]);
     }
@@ -59,6 +59,15 @@ client.on('message', msg => {
         .setDescription('!profile <@ user> - iti arata poza de profil a unui membru/sau poza ta.\n!sal - Salutare de la bot\n!re - Re de la bot\n!pa - Amenintari de la bot\n!injura <@ user> - Injura un membru!')
         .setColor('RANDOM')
         msg.channel.send(embed)
+    }
+    else if(command === 'lacolindat') {
+        let msgchannel = msg.guild.channels.find(`name`, "general");
+        if(!msgchannel) return;
+        let embed = new Discord.RichEmbed()
+        .setAuthor('La colindat...')
+        .setDescription('Ba voi astea. Eu la varsta voastra mergeam la colindat de halloween. Eram in generala si invatam dupa amiaza, ieseam pe la ora 7.\nDupa ultima ora mergeam in baie si ne machiam cu acoarele pe fata si speriam fetele de la liceu prin zone intunecate.\nAcasa ne faceam costume si mergeam la colindat cu vorba aia celebra, si oamenii chiar ne dadeau naiba! :D.')
+        .setColor('RANDOM')
+        msgchannel.send(embed)
     }
 });
 
