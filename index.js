@@ -61,11 +61,23 @@ client.on('message', msg => {
         msg.channel.send(embed)
     }
     else if(command === 'lacolindat') {
+        if(!msg.member.permissions.has('ADMINISTRATOR')) return;
         let msgchannel = msg.guild.channels.find(`name`, "general");
         if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('La colindat...')
         .setDescription('Ba voi astea. Eu la varsta voastra mergeam la colindat de halloween. Eram in generala si invatam dupa amiaza, ieseam pe la ora 7.\nDupa ultima ora mergeam in baie si ne machiam cu acoarele pe fata si speriam fetele de la liceu prin zone intunecate.\nAcasa ne faceam costume si mergeam la colindat cu vorba aia celebra, si oamenii chiar ne dadeau naiba! :D.')
+        .setColor('RANDOM')
+        msg.delete()
+        return msgchannel.send(embed)
+    }
+    else if(command === 'reclama') {
+        if(!msg.member.permissions.has('ADMINISTRATOR')) return;
+        let msgchannel = msg.guild.channels.find(`name`, "general");
+        if(!msgchannel) return;
+        let embed = new Discord.RichEmbed()
+        .setAuthor('Announcements:')
+        .setDescription('Sustine serverul de discord cu distribuire a urmatorului link:\nInvite: https://discord.gg/Uj8qkYD')
         .setColor('RANDOM')
         msg.delete()
         return msgchannel.send(embed)
