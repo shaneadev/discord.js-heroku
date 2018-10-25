@@ -1,6 +1,8 @@
 // Discord.js bot
 const Discord = require('discord.js');
 const client = new Discord.Client();
+let cooldown = new Set();
+let cdseconds = 60;
 
 client.on('ready', () => {
     client.user.setGame('justvillage.com', 'https://twitch.tv/justvillagecom/');
@@ -47,6 +49,16 @@ client.on('message', msg => {
         .setColor('RANDOM')
         msg.channel.send(embed)
     }
+    if(!msg.content.startsWith(prefix)) return ;
+    if(cooldown.has(msg.author.id)) {
+        msg.delete();
+        return msg.reply("Trebuie sa astepti un minute pentru a folosi din noi comanda!");
+    }
+    cooldown.add(msg.author.id);   
+    
+    setTimeout(() => {
+        cooldown.delete(msg.author.id)  
+    }, cdseconds * 1000)
 });
 
 client.on("channelCreate", async channel => {
