@@ -26,6 +26,9 @@ client.on('message', msg => {
         msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
         msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
     }
+    else if(command === 'profile') {
+        msg.reply(msg.author.avatarURL);   
+    }
 });
 
 client.on("channelCreate", async channel => {
