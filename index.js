@@ -151,6 +151,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
+    else if(command === 'privat') return msg.member.send("mesaj de test")
 });
 
 client.on("channelCreate", async channel => {
