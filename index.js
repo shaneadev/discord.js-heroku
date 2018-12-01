@@ -21,17 +21,19 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if(cooldown.has(msg.author.id)) {
-        msg.delete();
-        return msg.reply("Trebuie sa astepti 3 minute pentru a folosi din nou comenzile!");
+    if (command === 'sal') {
+        if(cooldown.has(msg.author.id)) {
+            msg.delete();
+            return msg.reply("Trebuie sa astepti 3 minute pentru a folosi din nou comenzile!");
+        }
+        else msg.channel.send('Salutare!');
+        
+        cooldown.add(msg.author.id);   
+
+        setTimeout(() => {
+            cooldown.delete(msg.author.id)  
+        }, cdseconds * 1000)
     }
-    cooldown.add(msg.author.id);   
-    
-    setTimeout(() => {
-        cooldown.delete(msg.author.id)  
-    }, cdseconds * 1000)
-    
-    if (command === 'sal') return msg.channel.send('Salutare!');
     else if (command === 'pa') return msg.channel.send('Ce pa? Poate vrei sa te tau!');
     else if (command === 're') return msg.channel.send('Re băjatu!');
     else if (command === 'thespriteboss') return msg.channel.send('TheSprite e sheful tuturor!');
