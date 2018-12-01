@@ -8,12 +8,18 @@ client.on('ready', () => {
     client.user.setGame('justvillage.com', 'https://twitch.tv/justvillagecom/');
 });
 
-client.on("guildMemberAdd", async member => {
+client.on("guildMemberAdd" ,(msg, member) => {
     var joinrole = member.guild.roles.find('name', 'Member');
     member.addRole(joinrole);
     let joinchannel = member.guild.channels.find(`name`, "general");
     if(!joinchannel) return;
     joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
+    
+    let embed = new Discord.RichEmbed()
+        .setAuthor('Bine ai venit pe serverul **San Andreas Universe**!')
+        .setDescription('Iti recomandam se te pui pe `**nu deranja**` pentru a evita notificarile inutile!\nDistractie placuta!')
+        .setColor('RANDOM')
+        msg.member.send(embed)
 });
 
 client.on('message', msg => {
@@ -151,7 +157,6 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if(command === 'privat') return msg.member.send("mesaj de test")
 });
 
 client.on("channelCreate", async channel => {
