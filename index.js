@@ -23,7 +23,7 @@ client.on('message', msg => {
     
     let blacklist = ['7777', ':7777', '2499'];
     let foundInText = false;
-    for(var i in backlist) {
+    for(var i in blacklist) {
         if(msg.content.toLowerCase().includes(blacklist[i].toLowerCase())) foundInText = true;
     }
     
@@ -32,7 +32,7 @@ client.on('message', msg => {
         msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
     }
     
-    if (msg === 'sal') {
+    if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -45,7 +45,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (msg === 'pa') {
+    else if (command === 'pa') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -58,7 +58,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (msg === 're') {
+    else if (command === 're') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -71,7 +71,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (msg === 'thespriteboss') {
+    else if (command === 'thespriteboss') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
