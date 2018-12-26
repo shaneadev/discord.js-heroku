@@ -21,6 +21,17 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
+    let blacklist = ['7777', ':7777', '2499'];
+    let foundInText = false;
+    for(var i in backlist) {
+        if(msg.content.toLowerCase().includes(blacklist[i].toLowerCase())) foundInText = true;
+    }
+    
+    if(foundInText) {
+        msg.delete();
+        msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
+    }
+    
     if (msg === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
@@ -128,12 +139,6 @@ client.on('message', msg => {
         setTimeout(() => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
-    }
-    
-    //sterge reclama
-    if(msg.includes('7777')) {
-        msg.delete();
-        msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
     }
 });
 
