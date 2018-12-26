@@ -21,7 +21,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'sal') {
+    if (msg === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -34,7 +34,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (command === 'pa') {
+    else if (msg === 'pa') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -47,7 +47,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (command === 're') {
+    else if (msg === 're') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -60,26 +60,12 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (command === 'thespriteboss') {
+    else if (msg === 'thespriteboss') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
         msg.channel.send('TheSprite e sheful tuturor!');
-        
-        cooldown.add(msg.author.id);   
-
-        setTimeout(() => {
-            cooldown.delete(msg.author.id)  
-        }, cdseconds * 1000)
-    }
-    else if (command === 'iarina') {
-        if(cooldown.has(msg.author.id)) {
-            msg.delete();
-            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-        }
-        msg.channel.send('shane: Langa tine uit de necazurile toate.. Tu imi dai putere sa merg mai departe.. tuu.. cu iubirea ta! @Iarina');
-        msg.channel.send('https://www.youtube.com/watch?v=aGG52QNC678');
         
         cooldown.add(msg.author.id);   
 
@@ -142,6 +128,14 @@ client.on('message', msg => {
         setTimeout(() => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
+    }
+    
+    //delete a mesage
+    if(msg.channel.id === '332746129215324164') {
+        if(msg.includes('7777')) {
+            msg.delete();
+            msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
+        }
     }
 });
 
