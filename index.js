@@ -130,8 +130,14 @@ client.on('message', msg => {
         }, cdseconds * 1000)
     }
     
-    //delete a mesage
+    //sterge reclama
     if(msg.channel.id === '332746129215324164') {
+        if(msg.includes('7777')) {
+            msg.delete();
+            msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
+        }
+    }
+    else if(msg.channel.id === '449218709429682179') {
         if(msg.includes('7777')) {
             msg.delete();
             msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
