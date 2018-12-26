@@ -5,7 +5,7 @@ let cooldown = new Set();
 let cdseconds = 180;
 
 client.on('ready', () => {
-    client.user.setGame('justvillage.com', 'https://twitch.tv/justvillagecom/');
+    client.user.setGame('shane.exe');
 });
 
 client.on("guildMemberAdd", member => {
@@ -131,17 +131,9 @@ client.on('message', msg => {
     }
     
     //sterge reclama
-    if(msg.channel.id === '332746129215324164') {
-        if(msg.includes('7777')) {
-            msg.delete();
-            msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
-        }
-    }
-    else if(msg.channel.id === '449218709429682179') {
-        if(msg.includes('7777')) {
-            msg.delete();
-            msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
-        }
+    if(msg.includes('7777')) {
+        msg.delete();
+        msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
     }
 });
 
