@@ -21,9 +21,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    var msg2 = msg.content.toUpperCase();
-    
-    if(msg2.includes('7777')) {
+    if(msg.content === '7777') {
         msg.delete();
         msg.reply(' test');
     }
