@@ -21,15 +21,11 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    let blacklist = ['7777', ':7777', '2499'];
-    let foundInText = false;
-    for(var i in blacklist) {
-        if(msg.content.toLowerCase().includes(blacklist[i].toLowerCase())) foundInText = true;
-    }
+    var msg2 = msg.content.toUpperCase();
     
-    if(foundInText) {
+    if(msg2.includes('7777')) {
         msg.delete();
-        msg.reply(", reclama altor servere nu este permisa in acesta categorie, poti face reclama in categoria #links ");
+        msg.reply(' test');
     }
     
     if (command === 'sal') {
