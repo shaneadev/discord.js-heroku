@@ -19,9 +19,27 @@ client.on("guildMemberAdd", member => {
 client.on('message', msg => {
     const thisWord = "cine e nr 1?";
     if(msg.content.includes(thisWord)) {
-        var facts = ["shane nr 1", "aztecas nr 1", "tot shane e nr 1 nob.."];
+    	if(cooldown.has(msg.author.id)) {
+            msg.delete();
+            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
+        }
+	    
+	if(!msg.member.permissions.has('ADMINISTRATOR')) return;
+        let msgchannel = msg.guild.channels.find(`name`, "general");
+        if(!msgchannel) return;
+        let embed = new Discord.RichEmbed()
+	var facts = ["shane nr 1", "aztecas nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
         var fact = Math.floor(Math.random() * facts.length);
-	msg.channel.send(facts[fact]);	   
+        .setDescription(facts[fact]);
+        .setColor('RANDOM');
+        msg.delete();
+        msgchannel.send(embed);
+	
+	cooldown.add(msg.author.id);   
+
+        setTimeout(() => {
+            cooldown.delete(msg.author.id)  
+        }, cdseconds * 1000)
     }
 	
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
