@@ -21,13 +21,13 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if(msg.includes ("cine e nr 1?")) {
+    if (command === 'nr1') {
         var facts = ["shane nr 1", "aztecas nr 1", "tot shane e nr 1 nob.."];
         var fact = Math.floor(Math.random() * facts.length);
 	msg.channel.send(facts[fact]);
     }
     
-    if (command === 'sal') {
+    else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
