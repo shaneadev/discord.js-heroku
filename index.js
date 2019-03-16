@@ -17,16 +17,16 @@ client.on("guildMemberAdd", member => {
 });
 
 client.on('message', msg => {
-    if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
-    const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
-    const args = msg.content.split(' ').slice(1).join(' ');
-    
-    const thisWord = "cine e nr 1?";
+    const thisWord = "nr11";
     if(msg.content.includes(thisWord)) {
         var facts = ["shane nr 1", "aztecas nr 1", "tot shane e nr 1 nob.."];
         var fact = Math.floor(Math.random() * facts.length);
 	msg.channel.send(facts[fact]);	   
     }
+	
+    if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
+    const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
+    const args = msg.content.split(' ').slice(1).join(' ');
 	
     if (command === 'nr1') {
         var facts = ["shane nr 1", "aztecas nr 1", "tot shane e nr 1 nob.."];
