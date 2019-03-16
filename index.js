@@ -23,18 +23,15 @@ client.on('message', msg => {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
-	    
-	if(!msg.member.permissions.has('ADMINISTRATOR')) return;
-        let msgchannel = msg.guild.channels.find(`name`, "general");
-        if(!msgchannel) return;
+
         let embed = new Discord.RichEmbed()
 	var facts = ["shane nr 1", "aztecas nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
         var fact = Math.floor(Math.random() * facts.length);
         .setDescription(facts[fact]);
         .setColor('RANDOM');
         msg.delete();
-        msgchannel.send(embed);
-	
+	msg.channel.send(embed);
+	    
 	cooldown.add(msg.author.id);   
 
         setTimeout(() => {
