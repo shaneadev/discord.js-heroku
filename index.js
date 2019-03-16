@@ -113,6 +113,18 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
+    else if(command === 'nr1') {
+		var msg2 = Array(2);
+		msg2[1] = "shane nr 1";
+	    msg2[2] = "aztecas nr 1";
+        var x = getRandomInt(0, 8);
+		if (x < 4){
+			msg.channel.sendMessage(msg2[1]);
+		}
+		else{
+			msg.channel.sendMessage(msg2[2]);
+		}
+	}
     else if(command === 'reclama') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
