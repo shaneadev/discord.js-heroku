@@ -24,13 +24,9 @@ client.on('message', msg => {
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
 
-        let embed = new Discord.RichEmbed()
-	var facts = ["shane nr 1", "aztecas nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
+        var facts = ["shane nr 1", "aztecas nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
         var fact = Math.floor(Math.random() * facts.length);
-        .setDescription(facts[fact]);
-        .setColor('RANDOM');
-        msg.delete();
-	msg.channel.send(embed);
+	msg.channel.send(facts[fact]);
 	    
 	cooldown.add(msg.author.id);   
 
