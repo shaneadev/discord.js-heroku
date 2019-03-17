@@ -42,7 +42,7 @@ client.on('message', msg => {
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
 
-        number = 8;
+        number = 9;
 	imageNumber = Math.floor (Math.random() * (number - 1 + 1)) + 1;
 	msg.channel.send( {files: ["./images/" + imageNumber + ".jpg"]});
 	cooldown.add(msg.author.id);   
