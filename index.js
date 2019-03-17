@@ -34,7 +34,7 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-	
+
     const thisWord2 = "botule pls ameninta";
     if(msg.content.includes(thisWord2)) {
     	if(cooldown.has(msg.author.id)) {
