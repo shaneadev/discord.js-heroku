@@ -35,6 +35,23 @@ client.on('message', msg => {
         }, cdseconds * 1000)
     }
 	
+    const thisWord2 = "botule pls ameninta";
+    if(msg.content.includes(thisWord2)) {
+    	if(cooldown.has(msg.author.id)) {
+            msg.delete();
+            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
+        }
+
+        number = 25;
+	imageNumber = Math.floor (Math.random() * (number - 1 + 1)) + 1;
+	msg.channel.send( {files: ["./images/" + imageNumber + ".jpg"]});
+	cooldown.add(msg.author.id);   
+
+        setTimeout(() => {
+            cooldown.delete(msg.author.id)  
+        }, cdseconds * 1000)
+    }
+	
     if (!msg.content.startsWith(process.env.PREFIX) || !msg.guild) return;
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
