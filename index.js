@@ -24,7 +24,7 @@ client.on('message', msg => {
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
 
-        var facts = ["shane nr 1", "aztecas nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
+        var facts = ["shane nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
         var fact = Math.floor(Math.random() * facts.length);
 	msg.channel.send(facts[fact]);
 	    
@@ -35,7 +35,7 @@ client.on('message', msg => {
         }, cdseconds * 1000)
     }
 
-    const thisWord2 = "botule pls ameninta";
+    const thisWord2 = "botule pls ameninta pe";
     if(msg.content.includes(thisWord2)) {
     	if(cooldown.has(msg.author.id)) {
             msg.delete();
