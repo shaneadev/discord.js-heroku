@@ -5,7 +5,7 @@ let cooldown = new Set();
 let cdseconds = 180;
 
 const serverStats = {
-	guildID: '487210347644583946',
+	guildID: '285793218023653376',
 	totalUsersID: '487210345702621184',
 	memberCountID: '487210346424172544',
 	botCountID: '570627933337681939'
