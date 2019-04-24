@@ -5,7 +5,6 @@ let cooldown = new Set();
 let cdseconds = 180;
 
 const serverStats = {
-	guildID: '285793218023653376',
 	totalUsersID: '487210345702621184',
 	memberCountID: '487210346424172544',
 	botCountID: '570627933337681939'
@@ -22,8 +21,6 @@ client.on("guildMemberAdd", member => {
     if(!joinchannel) return;
     joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
 
-    if(member.guild.id !== serverStats.guildID) return;
-	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
     client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.bot).size}`);
     client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.bot).size}`);
@@ -179,9 +176,7 @@ client.on('message', msg => {
     }
 });
 
-client.on("guildMemberRemove", member => {
-    if(member.guild.id !== serverStats.guildID) return;
-	
+client.on("guildMemberRemove", member => {	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
     client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.bot).size}`);
     client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.bot).size}`);
