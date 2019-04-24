@@ -21,9 +21,11 @@ client.on("guildMemberAdd", member => {
     if(!joinchannel) return;
     joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
 
+    if(member.guild.id !== serverStats.guildID) return;
+	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
-    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.bot).size}`);
-    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.bot).size}`);
+    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
+    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 });
 
 client.on('message', msg => {
@@ -176,7 +178,9 @@ client.on('message', msg => {
     }
 });
 
-client.on("guildMemberRemove", member => {	
+client.on("guildMemberRemove", member => {
+    if(member.guild.id !== serverStats.guildID) return;
+	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
     client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.bot).size}`);
     client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.bot).size}`);
