@@ -30,6 +30,15 @@ client.on("guildMemberAdd", member => {
 });
 
 client.on('message', msg => {
+    if(msg.content == "clear chat") {
+        if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+            msg.channel.fetchMessages()
+               .then(function(list){
+                msg.channel.bulkDelete(list);
+	    }, function(err){msg.channel.send("ERROR: ERROR CLEARING CHANNEL.")})                        
+        }
+    }
+	
     const thisWord = "cine e nr 1?";
     if(msg.content.includes(thisWord)) {
     	if(cooldown.has(msg.author.id)) {
@@ -183,8 +192,8 @@ client.on("guildMemberRemove", member => {
     if(member.guild.id !== serverStats.guildID) return;
 	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
-    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.bot).size}`);
-    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.bot).size}`);
+    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
+    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 });
 
 client.on("channelCreate", async channel => {
