@@ -12,7 +12,7 @@ const serverStats = {
 }
 
 client.on('ready', () => {
-    client.user.setGame('easter_shane.exe');
+    client.user.setGame('shane.exe');
 });
 
 client.on("guildMemberAdd", member => {
