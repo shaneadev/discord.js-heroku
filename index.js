@@ -5,6 +5,8 @@ const client = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 180;
 
+let muteTime = new Set();
+
 const serverStats = {
     guildID: '285793218023653376',
     totalUsersID: '487210345702621184',
@@ -72,10 +74,13 @@ client.on('message', msg => {
 	tomute.addRole(muteRole.id);
 	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
 	    
-	setTimeout(function() {
+	muteTime.add(tomute.id);
+	    
+	setTimeout(() => {
+	    muteTime.delete(tomute.id);
 	    tomute.removeRole(muteRole.id);
     	    msg.channel.send(`<@${tomute.id}> has been unmuted!`);
-	}, time);
+	}, time * 1000);
     }
 	
     else if (command === 'sal') {
