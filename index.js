@@ -62,20 +62,20 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if(command === 'mute') {
-	let memberr = msg.mentions.members.first();
-	if(!memberr) return msg.reply("you need to mention a member first!");
+	let tomute = msg.mentions.members.first();
+	if(!tomute) return msg.reply("you need to mention a member first!");
 	let muteRole = msg.guild.roles.find("name", "Muted");
 	if(!muteRole) return msg.reply("i can't find a role called `Muted`.");
 	let params = msg.content.split(" ").slice(1);
 	let time = params[1];
 	if(!time) return msg.reply("you must need to specify the time for mute!");
 
-	member.addRole(muteRole.id);
-	msg.channel.send(`You've been muted ${memberr.user.tag}`);
+	tomute.addRole(muteRole.id);
+	msg.channel.send(`You've been muted ${tomute.user.tag}`);
 
 	setTimeout(() => {
-	    member.removeRole(mute.id);
-	    msg.channel.send(`${memberr.user.tag} you've been unmuted!`);
+	    tomute.removeRole(muteRole.id);
+	    msg.channel.send(`${tomute.user.tag} you've been unmuted!`);
 	})
     }
 	
