@@ -1,20 +1,19 @@
 // Discord.js bot
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ms = require('ms');
 
 let cooldown = new Set();
 let cdseconds = 180;
 
 const serverStats = {
-	guildID: '285793218023653376',
-	totalUsersID: '487210345702621184',
-	memberCountID: '487210346424172544',
-	botCountID: '570627933337681939'
+    guildID: '285793218023653376',
+    totalUsersID: '487210345702621184',
+    memberCountID: '487210346424172544',
+    botCountID: '570627933337681939'
 }
 
 client.on('ready', () => {
-    	client.user.setGame('shane.exe');
+    client.user.setGame('shane.exe');
 });
 
 client.on("guildMemberAdd", member => {
