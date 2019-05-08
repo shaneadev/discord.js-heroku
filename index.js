@@ -67,14 +67,11 @@ client.on('message', msg => {
  	let mutee = msg.mentions.users.first();
 	if(!mutee) return msg.reply("Please supply a user to be muted!");
 	    
-	let reason = args.slice(i).join(" ");
-	if(!reason) reason = "No reason given";
-	    
 	let muterole = msg.guild.roles.find(r => r.name === "mute");
 	    
 	mutee.addRole(muterole.id).then(() => {
 		msg.delete()
-		mutee.send(`Hello, you have been in ${msg.guild.name} for: ${reason}`)
+		mutee.send(`mute by ${msg.guild.name}`)
 		msg.channel.send(`${mutee.user.username} was successfully muted.`)
 	})
     }
