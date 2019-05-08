@@ -62,7 +62,25 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'sal') {
+    if(command === 'mute') {
+	let member = msg.mentions.members.first();
+	if(!member) return msg.reply("You need to mention a member first!");
+	let muteRole = msg.guild.roles.find("name", "Muted");
+	if(!muteRole) return msg.reply("I can't find a role called `Muted`.");
+	let params = msg.content.split(" ").slice(1);
+	let time = params[1];
+	if(!time) return msg.reply("You must need to specify the time for mute!");
+		
+	member.addRole(muteRole.id);
+	msg.channel.send(`You've been muted for ${ms(ms(time), {long: true})} ${member.user.tag}`);
+
+	setTimeout(() => {
+		member.removeRole(mute.id);
+		msg.channel.send(`${member.user.tag} you've been unmuted! The mute lasted: ${ms(ms(time), {long: true})}`);
+	}
+    }
+	
+    else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
@@ -157,23 +175,6 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-	else if(command === 'mute') {
-		let member = msg.mentions.members.first();
-		if(!member) return msg.reply("You need to mention a member first!");
-		let muteRole = msg.guild.roles.find("name", "Muted");
-		if(!muteRole) return msg.reply("I can't find a role called `Muted`.");
-		let params = msg.content.split(" ").slice(1);
-		let time = params[1];
-		if(!time) return msg.reply("You must need to specify the time for mute!");
-		
-		member.addRole(muteRole.id);
-		msg.channel.send(`You've been muted for ${ms(ms(time), {long: true})} ${member.user.tag}`);
-		
-		setTimeout(functions() {
-			member.removeRole(mute.id);
-			msg.channel.send(`${member.user.tag} you've been unmuted! The mute lasted: ${ms(ms(time), {long: true})}`);
-		}
-	}
 });
 
 client.on("guildMemberRemove", member => {
