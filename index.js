@@ -67,13 +67,15 @@ client.on('message', msg => {
 	    
 	let muterole = msg.guild.roles.find('name', "mute");
 	    
-	mutee.addRole(muterole.id);
+	mutee.addRole(muterole);
 	msg.channel.send("Successfully muted.");
     }
     else if (command === 'testmute') {
 	let tomute = msg.mentions.users.first();
 	if(!tomute) return msg.reply("you need to mention a member first!");
-        tomute.addRole('575707209359687682');
+    	let m_role = msg.guild.roles.find('name', "mute"); 
+	tomute.addRole(m_role.id);
+	msg.reply("succesfully!");
     }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
