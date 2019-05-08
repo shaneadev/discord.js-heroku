@@ -12,7 +12,7 @@ const serverStats = {
     botCountID: '570627933337681939'
 }
 
-const ms = require("ms");
+const ms = require('ms');
 
 client.on('ready', () => {
     client.user.setGame('shane.exe');
