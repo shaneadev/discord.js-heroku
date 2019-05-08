@@ -168,13 +168,13 @@ client.on('message', msg => {
 		
 		member.addRole(muteRole.id);
 		msg.channel.send(`You've been muted for ${ms(ms(time), {long: true})} ${member.user.tag}`);
+		
+		setTimeout(functions() {
+			member.removeRole(mute.id);
+			msg.channel.send(`${member.user.tag} you've been unmuted! The mute lasted: ${ms(ms(time), {long: true})}`);
+		}
 	}
 });
-
-setTimeout(functions() {
-	member.removeRole(mute.id);
-	msg.channel.send(`${member.user.tag} you've been unmuted! The mute lasted: ${ms(ms(time), {long: true})}`);
-}
 
 client.on("guildMemberRemove", member => {
     if(member.guild.id !== serverStats.guildID) return;
