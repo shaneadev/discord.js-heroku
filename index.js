@@ -5,8 +5,6 @@ const client = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 180;
 
-let muteTime = new Set();
-
 const serverStats = {
     guildID: '285793218023653376',
     totalUsersID: '487210345702621184',
@@ -67,12 +65,10 @@ client.on('message', msg => {
  	let mutee = msg.mentions.users.first();
 	if(!mutee) return msg.reply("Please supply a user to be muted!");
 	    
-	let muterole = msg.guild.roles.find('name', "mute");
+	let muterole = mutee.guild.roles.find('name', "mute");
 	    
-	mutee.addRole(muterole.id)
-	msg.delete()
-	mutee.send(`mute by ${msg.guild.name}`)
-	msg.channel.send(`${mutee.user.username} was successfully muted.`)
+	mutee.addRole(muterole.id);
+	msg.channel.send("Successfully muted.");
     }
     else if (command === 'testmute') {
 	let tomute = msg.mentions.users.first();
