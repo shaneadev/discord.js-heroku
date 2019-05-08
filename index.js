@@ -1,6 +1,5 @@
 // Discord.js bot
 const Discord = require('discord.js');
-const msms = require('ms');
 const client = new Discord.Client();
 
 let cooldown = new Set();
