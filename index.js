@@ -72,10 +72,9 @@ client.on('message', msg => {
 	let time = args2[1];
 	if(!time) return msg.reply("you must need to specify the time for mute!");
 	let mtseconds = time;
-	tomute.addRole(muteRole.id);
-	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
 	    
-	
+    	await(tomute.addRole(muteRole.id));
+	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
     }
 
     else if (command === 'sal') {
