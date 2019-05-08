@@ -64,7 +64,7 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if(command === 'mute') {
-	let tomute = msg.mentions.members.first();
+	let tomute = msg.mentions.users.first();
 	if(!tomute) return msg.reply("you need to mention a member first!");
     	const args2 = msg.content.split(' ').slice(1);
 	let time = args2[1];
@@ -75,7 +75,12 @@ client.on('message', msg => {
 	    
 	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
     }
-
+    else if (command === 'testmute') {
+	let tomute = msg.mentions.users.first();
+	if(!tomute) return msg.reply("you need to mention a member first!");
+        const m_role = msg.guild.roles.find('name', 'muted');
+	tomute.addRole(m_role);  
+    }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
