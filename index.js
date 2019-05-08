@@ -64,7 +64,7 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if(command === 'mute') {
- 	let mutee = msg.mentions.users.first() || msg.guild.users.get(args[0]);
+ 	let mutee = msg.mentions.users.first();
 	if(!mutee) return msg.channel.send("Please supply a user to be muted!");
 	    
 	let reason = args.slice(i).join(" ");
