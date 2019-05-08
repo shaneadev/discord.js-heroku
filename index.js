@@ -69,11 +69,10 @@ client.on('message', msg => {
 	    
 	let muterole = msg.guild.roles.find(r => r.name === "mute");
 	    
-	mutee.addRole(muterole.id).then(() => {
-		msg.delete()
-		mutee.send(`mute by ${msg.guild.name}`)
-		msg.channel.send(`${mutee.user.username} was successfully muted.`)
-	})
+	mutee.addRole(muterole.id)
+	msg.delete()
+	mutee.send(`mute by ${msg.guild.name}`)
+	msg.channel.send(`${mutee.user.username} was successfully muted.`)
     }
     else if (command === 'testmute') {
 	let tomute = msg.mentions.users.first();
