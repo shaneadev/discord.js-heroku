@@ -1,10 +1,10 @@
 // Discord.js bot
-const	Discord = require('discord.js'),
-	client = new Discord.Client(),
-      	ms = require('ms');
+const Discord = require('discord.js');
+const client = new Discord.Client();
+const ms = require('ms');
 
-let	cooldown = new Set(),
-	cdseconds = 180;
+let cooldown = new Set();
+let cdseconds = 180;
 
 const serverStats = {
 	guildID: '285793218023653376',
@@ -62,7 +62,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    
+  
 	
     if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
