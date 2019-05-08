@@ -65,30 +65,12 @@ client.on('message', msg => {
     
     if(command === 'mute') {
  	let mutee = msg.mentions.users.first();
-	if(!mutee) return msg.channel.send("Please supply a user to be muted!");
+	if(!mutee) return msg.reply("Please supply a user to be muted!");
 	    
 	let reason = args.slice(i).join(" ");
 	if(!reason) reason = "No reason given";
 	    
-	let muterole = msg.guild.roles.find(r => r.name === "mute")
-	if(!muterole) {
-		try{
-			muterole = await msg.guild.createRole({
-				name: "mute",
-				color: "#000000",
-				permissions: []
-			})
-			msg.guild.channels.foreach(async (channel, id) => {
-				await channel.overwritePermissions(muterole, {
-					SEND_MESSAGES: false,
-					ADD_REACTIONS: false,
-					SEND_TTS_MESSAGES: false,
-					ATTACH_FILES: false,
-					SPEAK: false
-				})
-			})
-		}
-	}
+	let muterole = msg.guild.roles.find(r => r.name === "mute");
 	    
 	mutee.addRole(muterole.id).then(() => {
 		msg.delete()
