@@ -64,15 +64,37 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if(command === 'mute') {
-	let tomute = msg.mentions.users.first();
-	if(!tomute) return msg.reply("you need to mention a member first!");
-    	const args2 = msg.content.split(' ').slice(1);
-	let time = args2[1];
-	if(!time) return msg.reply("you must need to specify the time for mute!");
+ 	let mutee = msg.mentions.users.first() || msg.guild.users.get(args[0]);
+	if(!mutee) return msg.channel.send("Please supply a user to be muted!");
 	    
-	tomute.addRole('575707209359687682');
+	let reason = args.slice(i).join(" ");
+	if(!reason) reason = "No reason given";
 	    
-	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
+	let muterole = msg.guild.roles.find(r => r.name === "mute")
+	if(!muterole) {
+		try{
+			muterole = await msg.guild.createRole({
+				name: "mute",
+				color: "#000000",
+				permissions: []
+			})
+			msg.guild.channels.foreach(async (channel, id) => {
+				await channel.overwritePermissions(muterole, {
+					SEND_MESSAGES: false,
+					ADD_REACTIONS: false,
+					SEND_TTS_MESSAGES: false,
+					ATTACH_FILES: false,
+					SPEAK: false
+				})
+			})
+		}
+	}
+	    
+	mutee.addRole(muterole.id).then(() => {
+		msg.delete()
+		mutee.send(`Hello, you have been in ${msg.guild.name} for: ${reason}`)
+		msg.channel.send(`${mutee.user.username} was successfully muted.`)
+	})
     }
     else if (command === 'testmute') {
 	let tomute = msg.mentions.users.first();
