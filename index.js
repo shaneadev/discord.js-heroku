@@ -67,7 +67,7 @@ client.on('message', msg => {
  	let mutee = msg.mentions.users.first();
 	if(!mutee) return msg.reply("Please supply a user to be muted!");
 	    
-	let muterole = msg.guild.roles.find(r => r.name === "mute");
+	let muterole = msg.guild.roles.find('name', "mute");
 	    
 	mutee.addRole(muterole.id)
 	msg.delete()
