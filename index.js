@@ -12,6 +12,8 @@ const serverStats = {
     botCountID: '570627933337681939'
 }
 
+const ms = require("ms");
+
 client.on('ready', () => {
     client.user.setGame('shane.exe');
 });
@@ -72,11 +74,11 @@ client.on('message', msg => {
 
 	tomute.addRole(muteRole.id);
 	msg.channel.send(`You've been muted ${tomute.user.tag}`);
-
-	setTimeout(function() {
-	    tomute.removeRole(muteRole.id);
-	    msg.channel.send(`${tomute.user.tag} you've been unmuted!`);
-	});
+	    
+    	setTimeout(function(){
+    	    tomute.removeRole(muteRole.id);
+    	    msg.channel.send(`<@${tomute.id}> has been unmuted!`);
+  	}, ms(time));
     }
 	
     else if (command === 'sal') {
