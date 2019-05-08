@@ -70,16 +70,14 @@ client.on('message', msg => {
 	let time = args2[1];
 	if(!time) return msg.reply("you must need to specify the time for mute!");
 	    
-    	const m_role = msg.guild.roles.find('name', 'muted');
-	tomute.addRole(m_role);
+	tomute.addRole('575707209359687682');
 	    
 	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
     }
     else if (command === 'testmute') {
 	let tomute = msg.mentions.users.first();
 	if(!tomute) return msg.reply("you need to mention a member first!");
-        const m_role = msg.guild.roles.find('name', 'muted');
-	tomute.addRole(m_role);  
+        tomute.addRole('575707209359687682');
     }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
