@@ -61,16 +61,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'mute') {
- 	let mutee = msg.mentions.users.first();
-	if(!mutee) return msg.reply("Please supply a user to be muted!");
-	    
-	let muterole = msg.guild.roles.find('name', "mute");
-	    
-	mutee.addRole(muterole);
-	msg.channel.send("Successfully muted.");
-    }
-    else if (command === 'sal') {
+    if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
