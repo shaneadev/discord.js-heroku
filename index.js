@@ -1,8 +1,10 @@
 // Discord.js bot
-const Discord = require('discord.js');
-const client = new Discord.Client();
-let cooldown = new Set();
-let cdseconds = 180;
+const	Discord = require('discord.js'),
+	client = new Discord.Client(),
+      	ms = require('ms');
+
+let	cooldown = new Set(),
+	cdseconds = 180;
 
 const serverStats = {
 	guildID: '285793218023653376',
@@ -12,7 +14,7 @@ const serverStats = {
 }
 
 client.on('ready', () => {
-    client.user.setGame('shane.exe');
+    	client.user.setGame('shane.exe');
 });
 
 client.on("guildMemberAdd", member => {
@@ -35,26 +37,8 @@ client.on('message', msg => {
             msg.channel.fetchMessages()
                .then(function(list){
                 msg.channel.bulkDelete(list);
-	    }, function(err){msg.channel.send("ERROR: ERROR CLEARING CHANNEL.")})                        
+	    }, function(err){msg.channel.send("Error: I can't clear this channel.")})                        
         }
-    }
-	
-    const thisWord = "cine e nr 1?";
-    if(msg.content.includes(thisWord)) {
-    	if(cooldown.has(msg.author.id)) {
-            msg.delete();
-            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-        }
-
-        var facts = ["shane nr 1", "$eba mare om, respectat oriunde-n lume", "Yashian ak fanel arma secreta"];
-        var fact = Math.floor(Math.random() * facts.length);
-	msg.channel.send(facts[fact]);
-	    
-	cooldown.add(msg.author.id);   
-
-        setTimeout(() => {
-            cooldown.delete(msg.author.id)  
-        }, cdseconds * 1000)
     }
 
     const thisWord2 = "botule pls ameninta pe";
@@ -84,19 +68,6 @@ client.on('message', msg => {
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
         msg.channel.send('Salutare!');
-        
-        cooldown.add(msg.author.id);   
-
-        setTimeout(() => {
-            cooldown.delete(msg.author.id)  
-        }, cdseconds * 1000)
-    }
-    else if (command === 'pa') {
-        if(cooldown.has(msg.author.id)) {
-            msg.delete();
-            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-        }
-        msg.channel.send('Ce pa? Poate vrei sa te tau!');
         
         cooldown.add(msg.author.id);   
 
@@ -186,7 +157,24 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
+	else if(command === 'mute') {
+		let member = msg.mentions.members.first();
+		if(!member) return msg.reply("You need to mention a member first!");
+		let muteRole = msg.guild.roles.find("name", "Muted");
+		if(!muteRole) return msg.reply("I can't find a role called `Muted`.");
+		let params = msg.content.split(" ").slice(1);
+		let time = params[1];
+		if(!time) return msg.reply("You must need to specify the time for mute!");
+		
+		member.addRole(muteRole.id);
+		msg.channel.send(`You've been muted for ${ms(ms(time), {long: true})} ${member.user.tag}`);
+	}
 });
+
+setTimeout(functions() {
+	member.removeRole(mute.id);
+	msg.channel.send(`${member.user.tag} you've been unmuted! The mute lasted: ${ms(ms(time), {long: true})}`);
+}
 
 client.on("guildMemberRemove", member => {
     if(member.guild.id !== serverStats.guildID) return;
