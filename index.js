@@ -76,13 +76,9 @@ client.on('message', msg => {
 	    
 	muteTime.add(tomute.id);
 	    
-	setTimeout(() => {
-	    muteTime.delete(tomute.id);
-	    tomute.removeRole(muteRole.id);
-    	    msg.channel.send(`<@${tomute.id}> has been unmuted!`);
-	}, time * 1000);
+	setTimeout(muteOUT(tomute, time, muteRole), time);
     }
-	
+
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
@@ -179,6 +175,14 @@ client.on('message', msg => {
         }, cdseconds * 1000)
     }
 });
+
+function muteOUT(tomute, time, muteRole) {
+	if(time === 0) {
+	    muteTime.delete(tomute.id);
+	    tomute.removeRole(muteRole.id);
+	    msg.channel.send(`<@${tomute.id}> has been unmuted!`);	
+	}
+}
 
 client.on("guildMemberRemove", member => {
     if(member.guild.id !== serverStats.guildID) return;
