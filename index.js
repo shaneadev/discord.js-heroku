@@ -61,7 +61,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if(command === 'mute') {
+    if (command === 'mute') {
  	let mutee = msg.mentions.users.first();
 	if(!mutee) return msg.reply("Please supply a user to be muted!");
 	    
@@ -69,13 +69,6 @@ client.on('message', msg => {
 	    
 	mutee.addRole(muterole);
 	msg.channel.send("Successfully muted.");
-    }
-    else if (command === 'testmute') {
-	let tomute = msg.mentions.users.first();
-	if(!tomute) return msg.reply("you need to mention a member first!");
-    	let m_role = msg.guild.roles.find('name', "mute"); 
-	tomute.addRole(m_role.id);
-	msg.reply("succesfully!");
     }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
