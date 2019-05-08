@@ -55,7 +55,7 @@ client.on('message', msg => {
 	cooldown.add(msg.author.id);   
 
         setTimeout(() => {
-            cooldown.delete(msg.author.id)  
+            cooldown.delete(msg.author.id)
         }, cdseconds * 1000)
     }
 	
@@ -70,13 +70,17 @@ client.on('message', msg => {
 	if(!muteRole) return msg.reply("i can't find a role called `Muted`.");
 	let time = args[1];
 	if(!time) return msg.reply("you must need to specify the time for mute!");
-
+	let mtseconds = time;
 	tomute.addRole(muteRole.id);
 	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
 	    
 	muteTime.add(tomute.id);
 	    
-	setTimeout(muteOUT(tomute, time, muteRole), time);
+	 setTimeout(() => {
+	    tomute.removeRole(muteRole.id)
+	    msg.channel.send(`<@${tomute.id}> has been unmuted!`)
+            muteTime.delete(tomute.id)  
+        }, mtseconds * 1000)
     }
 
     else if (command === 'sal') {
@@ -175,14 +179,6 @@ client.on('message', msg => {
         }, cdseconds * 1000)
     }
 });
-
-function muteOUT(tomute, time, muteRole) {
-	if(time === 0) {
-	    muteTime.delete(tomute.id);
-	    tomute.removeRole(muteRole.id);
-	    msg.channel.send(`<@${tomute.id}> has been unmuted!`);	
-	}
-}
 
 client.on("guildMemberRemove", member => {
     if(member.guild.id !== serverStats.guildID) return;
