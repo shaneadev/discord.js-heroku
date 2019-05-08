@@ -70,7 +70,13 @@ client.on('message', msg => {
 	let time = params[1];
 	if(!time) return msg.reply("You must need to specify the time for mute!");
 
-	
+	users.addRole(muteRole.id);
+	msg.channel.send(`You've been muted for ${time} ${member.user.tag}`);
+
+	setTimeout(() => {
+	    users.removeRole(mute.id);
+	    msg.channel.send(`${member.user.tag} you've been unmuted! The mute lasted: ${time}`);
+	})
     }
 	
     else if (command === 'sal') {
