@@ -75,15 +75,7 @@ client.on('message', msg => {
 	tomute.addRole(muteRole.id);
 	msg.channel.send(`You've been muted <@${tomute.id}> for ${time} minutes.`);
 	    
-	muteTime.add(tomute.id);
-	    
-	 setTimeout(() => {
-	    if(mtseconds === 0) {
-		    tomute.removeRole(muteRole.id);
-		    msg.channel.send(`<@${tomute.id}> has been unmuted!`);
-		    muteTime.delete(tomute.id);
-	    }
-        }, mtseconds * 1000)
+	
     }
 
     else if (command === 'sal') {
