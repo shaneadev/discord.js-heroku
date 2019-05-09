@@ -72,7 +72,7 @@ client.on('message', msg => {
 	    const embed = new Discord.RichEmbed()
 		.setAuthor(msg.guild.name, msg.guild.iconURL)
 		.addField(`Owner: **${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}**`)
-		.addField(`Members: **${msg.guild.members.size}** ***(online: ${msg.guild.members.filter(m => m.presence.status === 'online').size})***`)
+		.addField(`Members: **${msg.guild.members.size}** ***(online: ${msg.guild.members.filter(m => m.presence.status === 'online' && m.presence.status === 'idle').size})***`)
 		.addField(`Creation date: **${msg.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(msg.channel.guild.createdAt)})**`)
 		.setThumbnail(msg.guild.iconURL)
 	    	.setColor('#3388d2')
