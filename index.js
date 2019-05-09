@@ -71,11 +71,9 @@ client.on('message', msg => {
 	    let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
 	    const embed = new Discord.RichEmbed()
 		.setAuthor(msg.guild.name, msg.guild.iconURL)
-		.setDescription(`
-			Owner: **${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}**\n
-			Members: **${msg.guild.members.size}** ***(online: ${msg.guild.members.filter(m => m.presence.status === 'online' && m => m.presence.status === 'idle').size})***\n)***
-			Creation date: **${msg.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(msg.channel.guild.createdAt)})**
-		`)
+		.setDescription(`Owner: **${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}**`)
+		.setDescription(`Members: **${msg.guild.members.size}** ***(online: ${msg.guild.members.filter(m => m.presence.status === 'online' && m => m.presence.status === 'idle').size})***`)
+		.setDescription(`Creation date: **${msg.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(msg.channel.guild.createdAt)})**`)
 		.setThumbnail(msg.guild.iconURL)
 	    	.setColor('#3388d2')
 	    msg.channel.send({embed});   
