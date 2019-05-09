@@ -62,6 +62,10 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if (command === 'serverinfo') {
+	    if(cooldown.has(msg.author.id)) {
+		    msg.delete();
+		    return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
+		}
 	    function checkDays(date) {
 		let now = new Date();
 		let diff = now.getTime() - date.getTime();
@@ -75,29 +79,14 @@ client.on('message', msg => {
 		.addField("Members:", `${msg.guild.members.size} (online: ${msg.guild.members.filter(m => m.presence.status === 'online').size})`, true)
 		.addField("Creation date:", `${getCreationDate("285793218023653376")}`, true)
 		.setThumbnail(msg.guild.iconURL)
-	    	.setColor('#3388d2')
-	    msg.channel.send({embed});   
-    }
-    else if (command === 'userinfo') {
-	    let user = msg.mentions.users.first() || msg.author;
-	    
-	    let userinfo = {};
-	    userinfo.avatar = user.displayAvatarURL()
-	    userinfo.name = user.username;
-	    userinfo.id = user.id;
-	    userinfo.status = user.presence.status;
-	    userinfo.registred = moment.utc(msg.guild.members.get(user.id).createdAt).format("dddd, MMMM Do, YYYY");
-	    userinfo.joined = moment.utc(msg.guild.members.get(user.id).joinedAt).format("dddd, MMMM Do, YYYY");
-	    
-	    const embed = new Discord.MessageEmbed()
-	    .setAuthor(user.tag, userinfo.avatar)
-	    .setThumbnail(userinfo.avatar)
-	    .addField(`Name:`, userinfo.name, true)
-	    .addField(`ID:`, userinfo.id, true)
-	    .addField(`Status:`, userinfo.status, true)
-	    .addField(`Registered date:`, userinfo.registered)
-	    .addField(`Joined date:`, userinfo.joined)
-	    msg.channel.send(embed); 
+		.setColor('#3388d2')
+	    msg.channel.send({embed});
+
+	    cooldown.add(msg.author.id);   
+
+	    setTimeout(() => {
+		cooldown.delete(msg.author.id)  
+	    }, cdseconds * 1000)
     }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
