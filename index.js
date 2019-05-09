@@ -78,7 +78,27 @@ client.on('message', msg => {
 	    	.setColor('#3388d2')
 	    msg.channel.send({embed});   
     }
-	
+    else if (command === 'userinfo') {
+	    let user = msg.mentions.users.first() || msg.author;
+	    
+	    let userinfo = {};
+	    userinfo.avatar = user.displayAvatarURL()
+	    userinfo.name = user.username;
+	    userinfo.id = user.id;
+	    userinfo.status = user.presence.status;
+	    userinfo.registred = moment.utc(msg.guild.members.get(user.id).createdAt).format("dddd, MMMM Do, YYYY");
+	    userinfo.joined = moment.utc(msg.guild.members.get(user.id).joinedAt).format("dddd, MMMM Do, YYYY");
+	    
+	    const embed = new Discord.MessageEmbed()
+	    .setAuthor(user.tag, userinfo.avatar)
+	    .setThumbnail(userinfo.avatar)
+	    .addField(`Name:`, userinfo.name, true)
+	    .addField(`ID:`, userinfo.id, true)
+	    .addField(`Status:`, userinfo.status, true)
+	    .addField(`Registered date:`, userinfo.registered)
+	    .addField(`Joined date:`, userinfo.joined)
+	    msg.channel.send(embed); 
+    }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
