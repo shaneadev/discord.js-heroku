@@ -5,6 +5,8 @@ const client = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 180;
 
+const moment = require('moment');
+
 const serverStats = {
     guildID: '285793218023653376',
     totalUsersID: '487210345702621184',
