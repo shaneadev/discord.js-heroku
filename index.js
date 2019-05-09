@@ -5,8 +5,6 @@ const client = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 180;
 
-const moment = require('moment');
-
 const serverStats = {
     guildID: '285793218023653376',
     totalUsersID: '487210345702621184',
@@ -70,12 +68,12 @@ client.on('message', msg => {
 		let days = Math.floor(diff / 86400000);
 		return days + (days == 1 ? " day" : " days") + " ago";
 	    };
-	    let verifLevels = ["None", "Low", "Medium", "(╯°□°）╯︵  ┻━┻", "┻━┻ミヽ(ಠ益ಠ)ノ彡┻━┻"];
+	    function getCreationDate(id) { return new Date((id / 4194304) + 1420070400000); }
 	    const embed = new Discord.RichEmbed()
 		.setAuthor(msg.guild.name, msg.guild.iconURL)
 		.addField("Owner:", `${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}`, true)
 		.addField("Members:", `${msg.guild.members.size} (online: ${msg.guild.members.filter(m => m.presence.status === 'online').size})`, true)
-		.addField("Creation date:", `${msg.channel.guild.createdAt.toUTCString().substr(0, 16)} (${checkDays(msg.channel.guild.createdAt)})`, true)
+		.addField("Creation date:", `${getCreationDate("285793218023653376")}`, true)
 		.setThumbnail(msg.guild.iconURL)
 	    	.setColor('#3388d2')
 	    msg.channel.send({embed});   
