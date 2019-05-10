@@ -136,7 +136,7 @@ client.on('message', msg => {
         let embed = new Discord.RichEmbed()
         .setAuthor(`Poza de profil a lui ${user.username} este:`)
         .setImage(user.displayAvatarURL)
-        .setColor('RANDOM')
+        .setColor('#3388d2')
         msg.channel.send(embed)
         
         cooldown.add(msg.author.id);   
@@ -153,7 +153,7 @@ client.on('message', msg => {
         let embed = new Discord.RichEmbed()
         .setAuthor('Comenzile botului sunt:')
         .setDescription('!profile <@ user> - iti arata poza de profil a unui membru/sau poza ta\n!sal - Salutare de la bot\n!re - Re de la bot\n!pa - Amenintari de la bot')
-        .setColor('RANDOM')
+        .setColor('#3388d2')
         msg.channel.send(embed)
         
         cooldown.add(msg.author.id);   
@@ -173,7 +173,7 @@ client.on('message', msg => {
         let embed = new Discord.RichEmbed()
         .setAuthor('Announcements:')
         .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/Uj8qkYD')
-        .setColor('RANDOM')
+        .setColor('#3388d2')
         msg.delete()
         msgchannel.send(embed)
         
