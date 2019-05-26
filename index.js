@@ -13,7 +13,14 @@ const serverStats = {
 }
 
 client.on('ready', () => {
-    client.user.setGame('shane.exe');
+    client.user.setStatus('available')
+    client.user.setPresence({
+        game: {
+            name: 'San Andreas Universe',
+            type: "STREAMING",
+            url: "https://www.twitch.tv/mue"
+        }
+    });
 });
 
 client.on("guildMemberAdd", member => {
