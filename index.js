@@ -68,20 +68,15 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'anno') {
-	    if(msg.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return msg.channel.send("Nu ai acces la aceasta comanda!")
-	    
-	    let argresult;
-	    let mChannel = msg.mentions.channels.first()
-	    
-	    msg.delete()
-	    if(mChannel) {
-		argresult = args.slice(1).join(" ")   
-		mChannel.send(argresult)
-	    } else {
-		    argresult = args.join(" ")
-		    msg.channel.send(argresult)
-	    }
+    if (command === 'keys') {
+        if(!msg.member.permissions.has('ADMINISTRATOR')) return;
+        let mchannel = msg.mentions.channels();
+	let embed = new Discord.RichEmbed()
+	.setAuthor('Steam keys:')
+        .setDescription("BQ0YG-FF0EE-GKCBR - Knights and Merchants (7$)")
+	.setDescription("TZ3CR-ZN87B-ZXF8D - Two Worlds Epic Edition (10$)")
+        .setColor('#3388d2')
+        mchannel.send(embed)
     }
     else if (command === 'serverinfo') {
 	    if(cooldown.has(msg.author.id)) {
