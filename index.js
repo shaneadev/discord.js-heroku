@@ -70,7 +70,7 @@ client.on('message', msg => {
     
     if (command === 'keys') {
     	if(!msg.member.permissions.has('ADMINISTRATOR')) return;
-        let msgchannel = msg.guild.channels.find(`name`, "secrets");
+        let msgchannel = msg.guild.channels.find(`name`, "general");
         if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('Steam keys:')
