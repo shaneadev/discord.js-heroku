@@ -68,7 +68,22 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'serverinfo') {
+    if (command === 'anno') {
+	    if(msg.member.hasPermission(["MANAGE_MESSAGES", "ADMINISTRATOR"])) return msg.channel.send("Nu ai acces la aceasta comanda!")
+	    
+	    let argresult;
+	    let mChannel = msg.mentions.channels.first()
+	    
+	    msg.delete()
+	    if(mChannel) {
+		argresult = args.slice(1).join(" ")   
+		mChannel.send(argresult)
+	    } else {
+		    argresult = args.join(" ")
+		    msg.channel.send(argresult)
+	    }
+    }
+    else if (command === 'serverinfo') {
 	    if(cooldown.has(msg.author.id)) {
 		    msg.delete();
 		    return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
