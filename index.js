@@ -69,8 +69,8 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if (command === 'keys') {
-        let msgchannel = msg.guild.channels.find(`name`, "general")
-        if(!msgchannel) return msg.channel.send('Canalul nu exista.')
+        let msgchannel = msg.guild.channels.find(`name`, "announcements")
+        if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('Steam keys:')
         .setDescription('BQ0YG-FF0EE-GKCBR - Knights and Merchants (7$)\nTZ3CR-ZN87B-ZXF8D - Two Worlds Epic Edition (10$)')
