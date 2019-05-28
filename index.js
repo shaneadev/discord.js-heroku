@@ -69,14 +69,15 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if (command === 'keys') {
-        if(!msg.member.permissions.has('ADMINISTRATOR')) return;
-        let mchannel = msg.mentions.channels();
-	let embed = new Discord.RichEmbed()
-	.setAuthor('Steam keys:')
-        .setDescription("BQ0YG-FF0EE-GKCBR - Knights and Merchants (7$)")
-	.setDescription("TZ3CR-ZN87B-ZXF8D - Two Worlds Epic Edition (10$)")
+    	if(!msg.member.permissions.has('ADMINISTRATOR')) return;
+        let msgchannel = msg.guild.channels.find(`name`, "secrets");
+        if(!msgchannel) return;
+        let embed = new Discord.RichEmbed()
+        .setAuthor('Steam keys:')
+        .setDescription('BQ0YG-FF0EE-GKCBR - Knights and Merchants (7$)\nTZ3CR-ZN87B-ZXF8D - Two Worlds Epic Edition (10$)')
         .setColor('#3388d2')
-        mchannel.send(embed)
+        msg.delete()
+        msgchannel.send(embed)
     }
     else if (command === 'serverinfo') {
 	    if(cooldown.has(msg.author.id)) {
