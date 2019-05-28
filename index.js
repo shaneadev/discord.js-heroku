@@ -26,7 +26,7 @@ client.on('ready', () => {
 client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member');
     member.addRole(joinrole);
-    let joinchannel = member.guild.channels.find(`name`, "general");
+    let joinchannel = member.guild.channels.find(`name`, "chat");
     if(!joinchannel) return;
     joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
 
@@ -185,7 +185,7 @@ client.on('message', msg => {
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
         if(!msg.member.permissions.has('ADMINISTRATOR')) return;
-        let msgchannel = msg.guild.channels.find(`name`, "general");
+        let msgchannel = msg.guild.channels.find(`name`, "chat");
         if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('Announcements:')
