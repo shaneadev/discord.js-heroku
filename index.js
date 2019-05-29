@@ -32,7 +32,7 @@ client.on("guildMemberAdd", member => {
 
     const embed = new Discord.RichEmbed()
 	.setAuthor(member.displayAvatarURL)
-    	.setDescription(`Bine ai venit pe server ${member}! :thumbsup: \nIti uram sedere placuta alaturi de noi.\nDaca ai o intrebare, o poti adresa pe chatul #general\nIti sugeram sa pui serverul pe mute pentru a evita spamul.`)
+    	.setDescription('Bine ai venit pe serverul San Andreas Universe! :thumbsup: \nIti uram sedere placuta alaturi de noi.\nDaca ai o intrebare, o poti adresa pe chatul #general\nIti sugeram sa pui serverul pe mute pentru a evita spamul.')
 	.setColor('#3388d2')
     member.send({embed});
 	
