@@ -81,31 +81,13 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if(command === 'profile') {
-        if(cooldown.has(msg.author.id)) {
-            msg.delete();
-            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-        }
-        let user = msg.mentions.users.first() || msg.author;
-        let embed = new Discord.RichEmbed()
-        .setAuthor(`Poza de profil a lui ${user.username} este:`)
-        .setImage(user.displayAvatarURL)
-        .setColor('#3388d2')
-        msg.channel.send(embed)
-        
-        cooldown.add(msg.author.id);   
-
-        setTimeout(() => {
-            cooldown.delete(msg.author.id)  
-        }, cdseconds * 1000)
-    }
     else if(command === 'reclama') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
         if(!msg.member.permissions.has('ADMINISTRATOR')) return;
-        let msgchannel = msg.guild.channels.find(`name`, "general");
+        let msgchannel = msg.guild.channels.find('name', 'general');
         if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('Announcements:')
