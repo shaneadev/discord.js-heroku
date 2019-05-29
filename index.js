@@ -71,10 +71,8 @@ client.on('message', msg => {
     const args = msg.content.split(' ').slice(1).join(' ');
     
     if (command === 'serverinfo') {
-	    if(cooldown.has(msg.author.id)) {
-		    msg.delete();
-		    return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-		}
+	    msg.delete();
+	    
 	    function checkDays(date) {
 		let now = new Date();
 		let diff = now.getTime() - date.getTime();
@@ -90,12 +88,6 @@ client.on('message', msg => {
 		.setThumbnail(msg.guild.iconURL)
 		.setColor('#3388d2')
 	    msg.channel.send({embed});
-
-	    cooldown.add(msg.author.id);   
-
-	    setTimeout(() => {
-		cooldown.delete(msg.author.id)  
-	    }, cdseconds * 1000)
     }
     else if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
