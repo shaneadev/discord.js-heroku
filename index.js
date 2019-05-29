@@ -27,11 +27,18 @@ client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member')
     member.addRole(joinrole)
 
-    client.channels.get(`575652735190302730`).send(`**[+]** Alo verutzii! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**!`)
+    client.channels.get(`575652735190302730`).send(`**[+]** Alo verutzii! ${member} s-a alaturat acestui grup! Bun venit in familie ${member}.`)
 	
-    client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
-    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
-    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
+    client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`)
+    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`)
+    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`)
+});
+
+client.on("guildMemberRemove", member => {
+
+    client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`)
+    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`)
+    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`)
 });
 
 client.on('message', msg => {
@@ -110,19 +117,6 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-    else if (command === 'thespriteboss') {
-        if(cooldown.has(msg.author.id)) {
-            msg.delete();
-            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-        }
-        msg.channel.send('TheSprite e sheful tuturor!');
-        
-        cooldown.add(msg.author.id);   
-
-        setTimeout(() => {
-            cooldown.delete(msg.author.id)  
-        }, cdseconds * 1000)
-    }
     else if(command === 'profile') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
@@ -132,23 +126,6 @@ client.on('message', msg => {
         let embed = new Discord.RichEmbed()
         .setAuthor(`Poza de profil a lui ${user.username} este:`)
         .setImage(user.displayAvatarURL)
-        .setColor('#3388d2')
-        msg.channel.send(embed)
-        
-        cooldown.add(msg.author.id);   
-
-        setTimeout(() => {
-            cooldown.delete(msg.author.id)  
-        }, cdseconds * 1000)
-    }
-    else if(command === 'commands') {
-        if(cooldown.has(msg.author.id)) {
-            msg.delete();
-            return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
-        }
-        let embed = new Discord.RichEmbed()
-        .setAuthor('Comenzile botului sunt:')
-        .setDescription('!profile <@ user> - iti arata poza de profil a unui membru/sau poza ta\n!sal - Salutare de la bot\n!re - Re de la bot\n!pa - Amenintari de la bot')
         .setColor('#3388d2')
         msg.channel.send(embed)
         
@@ -179,12 +156,6 @@ client.on('message', msg => {
             cooldown.delete(msg.author.id)  
         }, cdseconds * 1000)
     }
-});
-
-client.on("guildMemberRemove", member => {
-    client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
-    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
-    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 });
 
 client.on("channelCreate", async channel => {
