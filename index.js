@@ -68,17 +68,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'keys') {
-        let msgchannel = msg.guild.channels.find(`name`, "announcements")
-        if(!msgchannel) return;
-        let embed = new Discord.RichEmbed()
-        .setAuthor('Steam keys:')
-        .setDescription('BQ0YG-FF0EE-GKCBR - Knights and Merchants (7$)\nTZ3CR-ZN87B-ZXF8D - Two Worlds Epic Edition (10$)')
-        .setColor('#3388d2')
-        msg.delete()
-        msgchannel.send(embed)
-    }
-    else if (command === 'serverinfo') {
+    if (command === 'serverinfo') {
 	    if(cooldown.has(msg.author.id)) {
 		    msg.delete();
 		    return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
