@@ -27,13 +27,12 @@ client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member')
     member.addRole(joinrole)
 
-    client.channels.get(`583309832459780106`).send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`)
+    client.channels.get(`583309832459780106`).send(`**[+]** Alo verutziiii! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**!`)
 	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
     client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
     client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 });
-
 
 client.on('message', msg => {
     if(msg.content == "clear chat") {
@@ -183,8 +182,6 @@ client.on('message', msg => {
 });
 
 client.on("guildMemberRemove", member => {
-    if(member.guild.id !== serverStats.guildID) return;
-	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
     client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
     client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
