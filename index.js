@@ -6,7 +6,7 @@ let cooldown = new Set();
 let cdseconds = 180;
 
 const serverStats = {
-    guildID: '285793218023653376',
+    guildID: '487210347644583946',
     totalUsersID: '487210345702621184',
     memberCountID: '487210346424172544',
     botCountID: '570627933337681939'
@@ -26,7 +26,7 @@ client.on('ready', () => {
 client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member');
     member.addRole(joinrole);
-    let joinchannel = member.guild.channels.find(`name`, "general");
+    let joinchannel = member.guild.channels.find(`name`, "logs");
     if(!joinchannel) return;
     joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
 
