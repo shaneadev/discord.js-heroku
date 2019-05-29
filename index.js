@@ -27,7 +27,7 @@ client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member')
     member.addRole(joinrole)
 
-    client.channels.get(`575652735190302730`).send(`**[+]** Alo verutzii! ${member} s-a alaturat acestui grup! Bun venit in familie ${member}.`)
+    client.channels.get(`575652735190302730`).send(`**[+]** Alo verutzii! ${member} s-a alaturat acestui grup!`)
 	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`)
     client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`)
