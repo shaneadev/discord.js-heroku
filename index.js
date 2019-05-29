@@ -5,13 +5,6 @@ const client = new Discord.Client();
 let cooldown = new Set();
 let cdseconds = 180;
 
-const serverStats = {
-    guildID: '487210347644583946',
-    totalUsersID: '487210345702621184',
-    memberCountID: '487210346424172544',
-    botCountID: '570627933337681939'
-}
-
 client.on('ready', () => {
     client.user.setStatus('available')
     client.user.setPresence({
@@ -26,19 +19,7 @@ client.on('ready', () => {
 client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member')
     member.addRole(joinrole)
-
     client.channels.get(`575652735190302730`).send(`**[+]** Alo verutzii! ${member} s-a alaturat acestui grup!`)
-	
-    client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`)
-    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`)
-    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`)
-});
-
-client.on("guildMemberRemove", member => {
-
-    client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`)
-    client.channels.get(serverStats.memberCountID).setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`)
-    client.channels.get(serverStats.botCountID).setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`)
 });
 
 client.on('message', msg => {
