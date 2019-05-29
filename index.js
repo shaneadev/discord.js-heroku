@@ -19,7 +19,9 @@ client.on('ready', () => {
 client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member')
     member.addRole(joinrole)
-    client.channels.get(`575652735190302730`).send(`**[+]** Alo verutzii! ${member} s-a alaturat acestui grup!`)
+	
+    let joinchannel = member.guild.channels.find('name', 'secrets');
+    joinchannel.send(`**[+]** Alo verutzii! ${member} s-a alaturat acestui grup!`)
 });
 
 client.on('message', msg => {
@@ -53,26 +55,7 @@ client.on('message', msg => {
     const command = msg.content.split(' ')[0].substr(process.env.PREFIX.length);
     const args = msg.content.split(' ').slice(1).join(' ');
     
-    if (command === 'serverinfo') {
-	    msg.delete();
-	    
-	    function checkDays(date) {
-		let now = new Date();
-		let diff = now.getTime() - date.getTime();
-		let days = Math.floor(diff / 86400000);
-		return days + (days == 1 ? " day" : " days") + " ago";
-	    };
-	    function getCreationDate(id) { return new Date((id / 4194304) + 1420070400000); }
-	    const embed = new Discord.RichEmbed()
-		.setAuthor(msg.guild.name, msg.guild.iconURL)
-		.addField("Owner:", `${msg.guild.owner.user.username}#${msg.guild.owner.user.discriminator}`, true)
-		.addField("Members:", `${msg.guild.members.size} (online: ${msg.guild.members.filter(m => m.presence.status === 'online').size})`, true)
-		.addField("Creation date:", `${getCreationDate("285793218023653376")}`, true)
-		.setThumbnail(msg.guild.iconURL)
-		.setColor('#3388d2')
-	    msg.channel.send({embed});
-    }
-    else if (command === 'sal') {
+    if (command === 'sal') {
         if(cooldown.has(msg.author.id)) {
             msg.delete();
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
