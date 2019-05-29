@@ -27,8 +27,7 @@ client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member')
     member.addRole(joinrole)
 
-    const joinChannel = client.channels.get("575652735190302730")
-    joinChannel.send(`**[+]** Alo verutzi! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`)
+    client.channels.get(`583309832459780106`).send(`Welcome!`)
 
      if(member.guild.id !== serverStats.guildID) return;
 			
