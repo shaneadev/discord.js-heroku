@@ -24,12 +24,11 @@ client.on('ready', () => {
 });
 
 client.on("guildMemberAdd", member => {
-    var joinrole = member.guild.roles.find('name', 'Member');
-    member.addRole(joinrole);
-    let joinchannel = member.guild.channels.find(`name`, "logs");
-    if(!joinchannel) return;
-    joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
+    var joinrole = member.guild.roles.find('name', 'Member')
+    member.addRole(joinrole)
 
+    const joinChannel = client.channels.get("id", "576392140389744653")
+    joinChannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`)
 
      if(member.guild.id !== serverStats.guildID) return;
 			
