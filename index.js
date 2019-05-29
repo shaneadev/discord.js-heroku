@@ -26,10 +26,16 @@ client.on('ready', () => {
 client.on("guildMemberAdd", member => {
     var joinrole = member.guild.roles.find('name', 'Member');
     member.addRole(joinrole);
-    let joinchannel = member.guild.channels.find(`name`, "chat");
+    let joinchannel = member.guild.channels.find(`name`, "logs");
     if(!joinchannel) return;
     joinchannel.send(`**[+]** Alo veruti! **${member}** s-a alaturat acestui grup! Bun venit in familie **${member}**`);
 
+    const embed = new Discord.RichEmbed()
+	.setAuthor(member.displayAvatarURL)
+    	.setDescription(`Bine ai venit pe server ${member}! :thumbsup: \nIti uram sedere placuta alaturi de noi.\nDaca ai o intrebare, o poti adresa pe chatul #general\nIti sugeram sa pui serverul pe mute pentru a evita spamul.`)
+	.setColor('#3388d2')
+    member.send({embed});
+	
     if(member.guild.id !== serverStats.guildID) return;
 	
     client.channels.get(serverStats.totalUsersID).setName(`total members: ${member.guild.memberCount}`);
@@ -185,7 +191,7 @@ client.on('message', msg => {
             return msg.reply("trebuie sa astepti 3 minute pentru a folosi din nou aceasta comanda!");
         }
         if(!msg.member.permissions.has('ADMINISTRATOR')) return;
-        let msgchannel = msg.guild.channels.find(`name`, "chat");
+        let msgchannel = msg.guild.channels.find(`name`, "logs");
         if(!msgchannel) return;
         let embed = new Discord.RichEmbed()
         .setAuthor('Announcements:')
