@@ -14,6 +14,7 @@ let cdseconds = 180;
 
 client.on('ready', () => {
     console.log('I am online!');
+    client.user.setActivity('SA:MP Forever..', { type: 'WATCHING' });
 })
 
 client.on('guildMemberAdd', member => {
