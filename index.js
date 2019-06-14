@@ -61,6 +61,22 @@ client.on('message', msg => {
             }, function(err){msg.channel.send("Eroare: Nu pot sterge mesajele acestui canal.")})                        
         } else { msg.reply("nu ai acces la aceasta comanda!"); }
     }
+    else if(command === "forum") {
+        let embed = new Discord.RichEmbed()
+        .setAuthor('Forum:')
+        .setDescription('Forumul comunitatii noastre este w-moon.ro/forum')
+        .setColor('#385C7C')
+        msg.delete();
+        msg.channel.send(embed);
+    }
+    else if(command === "forum") {
+        let embed = new Discord.RichEmbed()
+        .setAuthor('Panel:')
+        .setDescription('Panelul comunitatii noastre este panel.w-moon.ro')
+        .setColor('#385C7C')
+        msg.delete();
+        msg.channel.send(embed);
+    }
 })
 
 client.login(process.env.TOKEN);
