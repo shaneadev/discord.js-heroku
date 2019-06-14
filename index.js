@@ -69,7 +69,7 @@ client.on('message', msg => {
         msg.delete();
         msg.channel.send(embed);
     }
-    else if(command === "forum") {
+    else if(command === "panel") {
         let embed = new Discord.RichEmbed()
         .setAuthor('Panel:')
         .setDescription('Panelul comunitatii noastre este panel.w-moon.ro')
