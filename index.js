@@ -3,32 +3,64 @@ const client = new Discord.Client();
 
 const config = require("./config.json");
 
+const server_status = {
+    total_users_ID: '487210345702621184',
+    member_count_ID: '487210346424172544',
+    bot_count_ID: '570627933337681939'
+}
+
 let cooldown = new Set();
 let cdseconds = 180;
 
 client.on('ready', () => {
-    console.log('I am online!');
-    client.user.setActivity('north.w-moon.ro', { type: 'WATCHING' });
+    console.log('I am online now!');
+    client.user.setActivity('shane!', { type: 'WATCHING' });
 })
 
 client.on('guildMemberAdd', member => {
-    //var join_role = member.guild.find(role => role.name == 'Member');
-    //member.addRole(join_role);
-    
-    let join_channel = client.channels.get('571034615699996701')
-    join_channel.send(`Hey! ${member} s-a alaturat grupului. Salut ${member}, bine ai venit! :tada: `);
+    let join_channel = client.channels.get('508727729256923137')
+    join_channel.send(`**[+]** Alo verutziii! ${member} s-a alaturat acestui grup!`);
 
     const embed = new Discord.RichEmbed()
-        .setAuthor(`Bine ai venit pe serverul W-Moon, ${member.displayName}!`)
-        .setDescription('**Iti uram sedere placuta alaturi de noi.\nNu uita sa ai un limbaj ok pe chatul <#general>.\n\nO zi/seara/dimineata placuta :wink:!**')
-        .setThumbnail('https://i.imgur.com/k7yuSxz.png')
-        .setColor('#385C7C')
+        .setAuthor(`Bine ai venit pe serverul nostru, ${member.displayName}!`)
+        .setDescription('**Iti uram sedere placuta alaturi de noi.\nDaca ai intrebari, ni le poti adresa pe chatul <#general>.\n\nO zi/seara/dimineata placuta :wink:!**')
+        .setThumbnail('https://cdn.discordapp.com/icons/508722185599189002/ea451e9042ed31db369a10e4f010f291.jpg')
+        .setColor('#070707')
         .setTimestamp()
-        .setFooter('joined', 'https://i.imgur.com/k7yuSxz.png');
+        .setFooter('joined', 'https://cdn.discordapp.com/icons/508722185599189002/ea451e9042ed31db369a10e4f010f291.jpg');
     member.user.send(embed);
+
+    //server status
+    let users_channel = client.channels.get(server_status.total_users_ID)
+    users_channel.setName(`total members: ${member.guild.memberCount}`);
+    let human_channel = client.channels.get(server_status.member_count_ID)
+    human_channel.setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
+    let bot_channel = client.channels.get(server_status.bot_count_ID)
+    bot_channel.setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
+})
+
+client.on('guildMemberRemove', member => {
+    //server status
+    let users_channel = client.channels.get(server_status.total_users_ID)
+    users_channel.setName(`total members: ${member.guild.memberCount}`);
+    let human_channel = client.channels.get(server_status.member_count_ID)
+    human_channel.setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
+    let bot_channel = client.channels.get(server_status.bot_count_ID)
+    bot_channel.setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 })
 
 client.on('message', msg => {
+    if(msg.content === "Salut") {
+        if(cooldown.has(msg.author.id)) return;
+        msg.channel.send('Salutare!');
+        
+        cooldown.add(msg.author.id);   
+
+        setTimeout(() => {
+            cooldown.delete(msg.author.id)  
+        }, cdseconds * 1000)
+    }
+  
     if(msg.content.indexOf(config.prefix) !== 0) return;
     const args = msg.content.slice(config.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase()
@@ -39,15 +71,15 @@ client.on('message', msg => {
         if(message_channel) {
             let embed = new Discord.RichEmbed()
             .setAuthor('Announcements:')
-            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/ak7DPKu')
-            .setColor('#385C7C')
+            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/s9gSsNa')
+            .setColor('#070707')
             msg.delete();
             message_channel.send(embed);
         } else {
             let embed = new Discord.RichEmbed()
             .setAuthor('Announcements:')
-            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/ak7DPKu')
-            .setColor('#385C7C')
+            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/s9gSsNa')
+            .setColor('#070707')
             msg.delete();
             msg.channel.send(embed);
         }
