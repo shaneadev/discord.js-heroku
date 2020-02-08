@@ -4,9 +4,8 @@ const client = new Discord.Client();
 const config = require("./config.json");
 
 const server_status = {
-    total_users_ID: '487210345702621184',
-    member_count_ID: '487210346424172544',
-    bot_count_ID: '570627933337681939'
+    total_users_ID: '675708927551471647',
+    member_count_ID: '675709013899608114'
 }
 
 let cooldown = new Set();
@@ -35,8 +34,6 @@ client.on('guildMemberAdd', member => {
     users_channel.setName(`total members: ${member.guild.memberCount}`);
     let human_channel = client.channels.get(server_status.member_count_ID)
     human_channel.setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
-    let bot_channel = client.channels.get(server_status.bot_count_ID)
-    bot_channel.setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 })
 
 client.on('guildMemberRemove', member => {
