@@ -19,7 +19,7 @@ client.on('ready', () => {
 
 client.on('guildMemberAdd', member => {
     let join_channel = client.channels.get('508727729256923137')
-    join_channel.send(`**[+]** Alo verutziii! ${member} s-a alaturat acestui grup!`);
+    join_channel.send(`**[+]** Alo, lume! ${member} s-a alaturat acestui grup!`);
 
     const embed = new Discord.RichEmbed()
         .setAuthor(`Bine ai venit pe serverul nostru, ${member.displayName}!`)
