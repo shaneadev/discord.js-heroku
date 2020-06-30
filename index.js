@@ -3,11 +3,6 @@ const client = new Discord.Client();
 
 const config = require("./config.json");
 
-const server_status = {
-    total_users_ID: '675708927551471647',
-    member_count_ID: '675709013899608114'
-}
-
 let cooldown = new Set();
 let cdseconds = 180;
 
@@ -17,33 +12,17 @@ client.on('ready', () => {
 })
 
 client.on('guildMemberAdd', member => {
-    let join_channel = client.channels.get('508727729256923137')
+    let join_channel = client.channels.get('694467466054729779')
     join_channel.send(`**[+]** Alo, lume! ${member} s-a alaturat acestui grup!`);
 
     const embed = new Discord.RichEmbed()
-        .setAuthor(`Bine ai venit pe serverul nostru, ${member.displayName}!`)
-        .setDescription('**Iti uram sedere placuta alaturi de noi.\nDaca ai intrebari, ni le poti adresa pe chatul <#general>.\n\nO zi/seara/dimineata placuta :wink:!**')
-        .setThumbnail('https://cdn.discordapp.com/icons/508722185599189002/ea451e9042ed31db369a10e4f010f291.jpg')
-        .setColor('#070707')
+        .setAuthor(`Bine ai venit pe discordul nostru, ${member.displayName}!`)
+        .setDescription('**Te asteptam pe serverul de SA:MP al comunitatii!\nIP: rpg.optimgame.ro\n\nO zi/seara/dimineata placuta :wink:!**')
+        .setThumbnail('https://cdn.discordapp.com/icons/604635561097166858/b424eaaba0afb8e9ff5662f7da002300.jpg')
+        .setColor('#55ca4a')
         .setTimestamp()
-        .setFooter('joined', 'https://cdn.discordapp.com/icons/508722185599189002/ea451e9042ed31db369a10e4f010f291.jpg');
+        .setFooter('joined', 'https://cdn.discordapp.com/icons/604635561097166858/b424eaaba0afb8e9ff5662f7da002300.jpg');
     member.user.send(embed);
-
-    //server status
-    let users_channel = client.channels.get(server_status.total_users_ID)
-    users_channel.setName(`total members: ${member.guild.memberCount}`);
-    let human_channel = client.channels.get(server_status.member_count_ID)
-    human_channel.setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
-})
-
-client.on('guildMemberRemove', member => {
-    //server status
-    let users_channel = client.channels.get(server_status.total_users_ID)
-    users_channel.setName(`total members: ${member.guild.memberCount}`);
-    let human_channel = client.channels.get(server_status.member_count_ID)
-    human_channel.setName(`human count: ${member.guild.members.filter(m => !m.user.bot).size}`);
-    let bot_channel = client.channels.get(server_status.bot_count_ID)
-    bot_channel.setName(`bot count: ${member.guild.members.filter(m => m.user.bot).size}`);
 })
 
 client.on('message', msg => {
@@ -68,15 +47,15 @@ client.on('message', msg => {
         if(message_channel) {
             let embed = new Discord.RichEmbed()
             .setAuthor('Announcements:')
-            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/s9gSsNa')
-            .setColor('#070707')
+            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/tMYy4fS')
+            .setColor('#55ca4a')
             msg.delete();
             message_channel.send(embed);
         } else {
             let embed = new Discord.RichEmbed()
             .setAuthor('Announcements:')
-            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/s9gSsNa')
-            .setColor('#070707')
+            .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/tMYy4fS')
+            .setColor('#55ca4a')
             msg.delete();
             msg.channel.send(embed);
         }
@@ -93,16 +72,16 @@ client.on('message', msg => {
     else if(command === "forum") {
         let embed = new Discord.RichEmbed()
         .setAuthor('Forum:')
-        .setDescription('Forumul comunitatii noastre este w-moon.ro/forum')
-        .setColor('#385C7C')
+        .setDescription('Forumul comunitatii noastre este forum.optimgame.ro')
+        .setColor('#55ca4a')
         msg.delete();
         msg.channel.send(embed);
     }
      else if(command === "panel") {
         let embed = new Discord.RichEmbed()
         .setAuthor('Panel:')
-        .setDescription('Panelul comunitatii noastre este panel.w-moon.ro')
-        .setColor('#385C7C')
+        .setDescription('Panelul comunitatii noastre este panel.optimgame.ro')
+        .setColor('#55ca4a')
         msg.delete();
         msg.channel.send(embed);
     }
