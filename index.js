@@ -62,11 +62,9 @@ client.on('message', msg => {
     }
     else if(command === "cc") {
         if(msg.member.hasPermission("MANAGE_MESSAGES")) {
-            msg.channel.fetchMessages()
-               .then(function(list) {
-                    msg.channel.bulkDelete(list);
-                    msg.reply("chat cleared!");
-            }, function(err){msg.channel.send("Eroare: Nu pot sterge mesajele acestui canal.")})                        
+            msg.channel.bulkDelete(30).than(() => {
+                msg.channel.send(`Cleared 30 messages!`).than(() => msg.delete(5000));
+            });                     
         } else { msg.reply("nu ai acces la aceasta comanda!"); }
     }
     else if(command === "forum") {
