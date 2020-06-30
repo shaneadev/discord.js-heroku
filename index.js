@@ -19,7 +19,7 @@ client.on('guildMemberAdd', member => {
         .setAuthor(`Bine ai venit pe discordul nostru, ${member.displayName}!`)
         .setDescription('**Te asteptam pe serverul de SA:MP al comunitatii!\nIP: rpg.optimgame.ro\n\nO zi/seara/dimineata placuta :wink:!**')
         .setThumbnail('https://cdn.discordapp.com/icons/604635561097166858/b424eaaba0afb8e9ff5662f7da002300.jpg')
-        .setColor('#55ca4a')
+        .setColor('#358e2d')
         .setTimestamp()
         .setFooter('joined', 'https://cdn.discordapp.com/icons/604635561097166858/b424eaaba0afb8e9ff5662f7da002300.jpg');
     member.user.send(embed);
@@ -48,14 +48,14 @@ client.on('message', msg => {
             let embed = new Discord.RichEmbed()
             .setAuthor('Announcements:')
             .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/tMYy4fS')
-            .setColor('#55ca4a')
+            .setColor('#358e2d')
             msg.delete();
             message_channel.send(embed);
         } else {
             let embed = new Discord.RichEmbed()
             .setAuthor('Announcements:')
             .setDescription('Sustine serverul de discord cu o distribuire a urmatorului link:\nInvite: https://discord.gg/tMYy4fS')
-            .setColor('#55ca4a')
+            .setColor('#358e2d')
             msg.delete();
             msg.channel.send(embed);
         }
@@ -73,7 +73,7 @@ client.on('message', msg => {
         let embed = new Discord.RichEmbed()
         .setAuthor('Forum:')
         .setDescription('Forumul comunitatii noastre este forum.optimgame.ro')
-        .setColor('#55ca4a')
+        .setColor('#358e2d')
         msg.delete();
         msg.channel.send(embed);
     }
@@ -81,7 +81,7 @@ client.on('message', msg => {
         let embed = new Discord.RichEmbed()
         .setAuthor('Panel:')
         .setDescription('Panelul comunitatii noastre este panel.optimgame.ro')
-        .setColor('#55ca4a')
+        .setColor('#358e2d')
         msg.delete();
         msg.channel.send(embed);
     }
